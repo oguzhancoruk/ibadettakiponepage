@@ -10,6 +10,7 @@ function Header() {
           <li><Link to="/">Ana Sayfa</Link></li>
           <li><Link to="/features">Özellikler</Link></li>
           <li><Link to="/contact">İletişim</Link></li>
+          <li><Link to="/privacy-policy">İletişim</Link></li>
         </ul>
       </nav>
     </header>
