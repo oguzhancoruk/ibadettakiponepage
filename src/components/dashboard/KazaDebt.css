@@ -1,0 +1,352 @@
+.kaza-debt-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.kaza-debt-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.back-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+  padding: 12px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.back-btn:hover {
+  background: #F9FAFB;
+  border-color: #D1D5DB;
+}
+
+.kaza-debt-header h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1F2937;
+  margin: 0;
+}
+
+.summary-card {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 32px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.summary-date,
+.summary-days {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #6B7280;
+  margin-bottom: 8px;
+}
+
+.summary-days {
+  font-size: 13px;
+  color: #9CA3AF;
+  margin-bottom: 20px;
+}
+
+.summary-stats {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 20px;
+  border-top: 1px solid #E5E7EB;
+}
+
+.summary-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.summary-stat-value {
+  font-size: 28px;
+  font-weight: 700;
+  color: #40A2E3;
+}
+
+.summary-stat-value.success {
+  color: #10B981;
+}
+
+.summary-stat-value.danger {
+  color: #DC2626;
+}
+
+.summary-stat-label {
+  font-size: 14px;
+  color: #6B7280;
+  font-weight: 500;
+}
+
+.summary-stat-divider {
+  width: 1px;
+  background: #E5E7EB;
+  align-self: stretch;
+}
+
+.prayers-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 24px;
+}
+
+.prayer-detail-card {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s;
+}
+
+.prayer-detail-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.prayer-detail-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.prayer-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 700;
+  color: white;
+}
+
+.prayer-detail-info {
+  flex: 1;
+}
+
+.prayer-detail-info h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1F2937;
+  margin: 0 0 4px 0;
+}
+
+.remaining-text {
+  font-size: 14px;
+  color: #DC2626;
+  font-weight: 500;
+  margin: 0;
+}
+
+.progress-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 12px;
+  background: #E5E7EB;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  transition: width 0.3s;
+}
+
+.progress-percentage {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1F2937;
+  min-width: 45px;
+  text-align: right;
+}
+
+.prayer-stats {
+  display: flex;
+  justify-content: space-around;
+  padding: 16px;
+  background: #F9FAFB;
+  border-radius: 12px;
+  margin-bottom: 16px;
+}
+
+.prayer-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.prayer-stat-label {
+  font-size: 12px;
+  color: #6B7280;
+  font-weight: 500;
+}
+
+.prayer-stat-value {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1F2937;
+}
+
+.prayer-stat-value.primary {
+  color: #40A2E3;
+}
+
+.prayer-stat-value.success {
+  color: #10B981;
+}
+
+.prayer-stat-value.danger {
+  color: #DC2626;
+}
+
+.prayed-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.prayed-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content h3 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1F2937;
+  margin: 0 0 8px 0;
+}
+
+.modal-description {
+  font-size: 14px;
+  color: #6B7280;
+  margin: 0 0 20px 0;
+  line-height: 1.5;
+}
+
+.modal-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #D1D5DB;
+  border-radius: 10px;
+  font-size: 16px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+
+.modal-input:focus {
+  outline: none;
+  border-color: #40A2E3;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.modal-btn {
+  flex: 1;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.cancel-btn {
+  background: #F9FAFB;
+  border: 1px solid #D1D5DB;
+  color: #6B7280;
+}
+
+.cancel-btn:hover {
+  background: #F3F4F6;
+}
+
+.confirm-btn {
+  background: #40A2E3;
+  border: none;
+  color: white;
+}
+
+.confirm-btn:hover {
+  background: #3691D1;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .kaza-debt-header h2 {
+    font-size: 24px;
+  }
+
+  .summary-stats {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .summary-stat-divider {
+    display: none;
+  }
+
+  .prayers-container {
+    grid-template-columns: 1fr;
+  }
+}

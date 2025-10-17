@@ -1,0 +1,134 @@
+.daily-prayer-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.daily-prayer-header {
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.daily-prayer-header h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1F2937;
+  margin: 0 0 8px 0;
+}
+
+.subtitle {
+  font-size: 16px;
+  color: #6B7280;
+  margin: 0 0 16px 0;
+}
+
+.date-info {
+  display: inline-block;
+  background: white;
+  padding: 12px 24px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.date-text {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1F2937;
+  margin-bottom: 4px;
+}
+
+.day-text {
+  font-size: 14px;
+  color: #6B7280;
+  text-transform: capitalize;
+}
+
+/* Prayer List */
+.prayer-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.prayer-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: white;
+  padding: 20px;
+  border-radius: 16px;
+  border-left: 4px solid;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.prayer-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.prayer-card.checked {
+  background: #F0FDF4;
+}
+
+.prayer-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.prayer-info {
+  flex: 1;
+}
+
+.prayer-name {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1F2937;
+  margin: 0;
+}
+
+.prayer-checkbox {
+  width: 32px;
+  height: 32px;
+  border: 2px solid #D1D5DB;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.prayer-checkbox.checked {
+  background: #10B981;
+  border-color: #10B981;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .date-navigator {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .date-btn {
+    width: 100%;
+  }
+
+  .prayer-card {
+    padding: 16px;
+  }
+
+  .prayer-icon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .prayer-name {
+    font-size: 16px;
+  }
+}
