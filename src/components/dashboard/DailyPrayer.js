@@ -33,6 +33,7 @@ function DailyPrayer() {
   useEffect(() => {
     fetchDailyPrayer();
     fetchStats();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchDailyPrayer = async () => {

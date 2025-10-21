@@ -38,10 +38,12 @@ function Fasting() {
     fetchFasting(selectedDate);
     fetchStats();
     fetchMonthFastings();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     fetchFasting(selectedDate);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedDate]);
 
   const fetchFasting = async (date) => {

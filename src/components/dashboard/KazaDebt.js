@@ -30,6 +30,7 @@ function KazaDebt() {
 
   useEffect(() => {
     fetchDebt();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debtId]);
 
   const fetchDebt = async () => {
@@ -148,7 +149,7 @@ function KazaDebt() {
       {/* Prayer Cards */}
       <div className="prayers-container">
         {PRAYERS.map((prayer) => {
-          const totalRequired = debt[`${prayer.key}TotalRequired`] || 0;
+          // const totalRequired = debt[`${prayer.key}TotalRequired`] || 0;
           const dailyPrayed = debt[`${prayer.key}DailyPrayed`] || 0;
           const kazaPrayed = debt[`${prayer.key}KazaPrayed`] || 0;
           const remaining = debt[`${prayer.key}RemainingDebt`] || 0;

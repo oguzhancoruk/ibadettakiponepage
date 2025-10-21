@@ -26,6 +26,7 @@ function DashboardHome() {
     const userData = JSON.parse(localStorage.getItem('user'));
     setUser(userData);
     fetchStats(userData);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchStats = async (userData) => {
