@@ -1,40 +1,43 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import config from '../../config/config.json';
 import moment from 'moment';
 import 'moment/locale/tr';
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
 import {
-  FiCalendar,
   FiCheckCircle,
   FiXCircle,
-  FiMoon,
-  FiRepeat,
-  FiStar,
   FiAlertCircle
 } from 'react-icons/fi';
+import { IoFastFoodOutline, IoMoon, IoRepeat, IoStar } from 'react-icons/io5';
+import { useLoading } from '../../context/LoadingContext';
+import logo from '../assets/images/1.png';
 import './Fasting.css';
 
 moment.locale('tr');
 
 const FASTING_TYPES = [
-  { key: 'ramadan', name: 'Ramazan', icon: FiMoon, color: '#9B59B6' },
-  { key: 'kaza', name: 'Kaza', icon: FiRepeat, color: '#E67E22' },
-  { key: 'voluntary', name: 'Nafile', icon: FiStar, color: '#3498DB' }
+  { key: 'ramadan', name: 'Ramazan', icon: IoMoon, color: '#9B59B6' },
+  { key: 'kaza', name: 'Kaza', icon: IoRepeat, color: '#E67E22' },
+  { key: 'voluntary', name: 'Nafile', icon: IoStar, color: '#3498DB' }
 ];
 
 function Fasting() {
+  const { isLoading, setIsLoading } = useLoading();
   const [selectedDate, setSelectedDate] = useState(moment().format('YYYY-MM-DD'));
   const [fasting, setFasting] = useState(null);
   const [stats, setStats] = useState(null);
-  const [loading, setLoading] = useState(true);
   const [typeModalVisible, setTypeModalVisible] = useState(false);
   const [kazaModalVisible, setKazaModalVisible] = useState(false);
   const [kazaAction, setKazaAction] = useState('add');
   const [kazaCount, setKazaCount] = useState('');
+  const [markedDates, setMarkedDates] = useState({});
 
   useEffect(() => {
     fetchFasting(selectedDate);
     fetchStats();
+    fetchMonthFastings();
   }, []);
 
   useEffect(() => {
@@ -42,6 +45,7 @@ function Fasting() {
   }, [selectedDate]);
 
   const fetchFasting = async (date) => {
+    setIsLoading(true);
     try {
       const user = JSON.parse(localStorage.getItem('user'));
       const response = await axios.get(
@@ -60,7 +64,7 @@ function Fasting() {
       console.error('Oruç getir hatası:', error);
       setFasting(null);
     } finally {
-      setLoading(false);
+      setIsLoading(false);
     }
   };
 
@@ -82,6 +86,38 @@ function Fasting() {
     }
   };
 
+  const fetchMonthFastings = async () => {
+    try {
+      const user = JSON.parse(localStorage.getItem('user'));
+      const startOfMonth = moment().startOf('month').format('YYYY-MM-DD');
+      const endOfMonth = moment().endOf('month').format('YYYY-MM-DD');
+
+      const response = await axios.get(
+        `${config.api_base}/api/fasting/range?startDate=${startOfMonth}&endDate=${endOfMonth}`,
+        {
+          headers: { Authorization: `Bearer ${user._id}` }
+        }
+      );
+
+      if (response.data.statusCode === 200 && response.data.data) {
+        const marked = {};
+        response.data.data.forEach((item) => {
+          if (item.fasted) {
+            // Backend'den gelen tarih ISO formatında, YYYY-MM-DD'ye çevir
+            const dateKey = moment(item.date).format('YYYY-MM-DD');
+            marked[dateKey] = {
+              type: item.type,
+              marked: true
+            };
+          }
+        });
+        setMarkedDates(marked);
+      }
+    } catch (error) {
+      console.error('Ay oruçları getir hatası:', error);
+    }
+  };
+
   const toggleFasting = async (type) => {
     try {
       const user = JSON.parse(localStorage.getItem('user'));
@@ -100,6 +136,7 @@ function Fasting() {
       setTypeModalVisible(false);
       fetchFasting(selectedDate);
       fetchStats();
+      fetchMonthFastings();
       alert(`${type === 'ramadan' ? 'Ramazan' : type === 'kaza' ? 'Kaza' : 'Nafile'} orucu işaretlendi!`);
     } catch (error) {
       console.error('Oruç işaretleme hatası:', error);
@@ -123,6 +160,7 @@ function Fasting() {
 
       fetchFasting(selectedDate);
       fetchStats();
+      fetchMonthFastings();
     } catch (error) {
       console.error('Oruç kaldırma hatası:', error);
       alert('Oruç kaldırılırken bir hata oluştu');
@@ -154,6 +192,7 @@ function Fasting() {
       setKazaCount('');
       fetchFasting(selectedDate);
       fetchStats();
+      fetchMonthFastings();
       alert(kazaAction === 'add' ? `${count} kaza orucu eklendi` : `${count} kaza orucu azaltıldı`);
     } catch (error) {
       console.error('Kaza oruç hatası:', error);
@@ -161,37 +200,99 @@ function Fasting() {
     }
   };
 
-  if (loading) {
-    return <div className="loading">Yükleniyor...</div>;
-  }
-
   const isToday = selectedDate === moment().format('YYYY-MM-DD');
   const isFasted = fasting && fasting.fasted;
+
+  if (isLoading) {
+    return (
+      <div className="page-loading-container">
+        <img src={logo} alt="Loading" className="page-loading-logo" />
+      </div>
+    );
+  }
 
   return (
     <div className="fasting-container">
       {/* Header */}
       <div className="fasting-header">
-        <div>
-          <h2>Oruç Takibi</h2>
-          <p className="fasting-subtitle">
-            {moment(selectedDate).format('DD MMMM YYYY, dddd')}
-            {isToday && <span className="today-badge">BUGÜN</span>}
-          </p>
-        </div>
-        <div className="date-input-wrapper">
-          <FiCalendar size={18} />
-          <input
-            type="date"
-            value={selectedDate}
-            onChange={(e) => setSelectedDate(e.target.value)}
-            max={moment().format('YYYY-MM-DD')}
-          />
+        <div className="header-content">
+          <div className="header-icon">
+            <IoFastFoodOutline size={32} color="white" />
+          </div>
+          <div className="header-info">
+            <h2>Oruç Takibi</h2>
+            <div className="header-date">
+              <span>{moment(selectedDate).format('DD MMMM YYYY, dddd')}</span>
+              {isToday && <span className="today-badge">BUGÜN</span>}
+            </div>
+          </div>
         </div>
       </div>
 
       <div className="fasting-content">
         <div className="fasting-main">
+          {/* Calendar Card */}
+          <div className="calendar-card">
+            <Calendar
+              value={new Date(selectedDate)}
+              onChange={(date) => setSelectedDate(moment(date).format('YYYY-MM-DD'))}
+              maxDate={new Date()}
+              locale="tr-TR"
+              tileClassName={({ date }) => {
+                const dateString = moment(date).format('YYYY-MM-DD');
+                if (markedDates[dateString]) {
+                  const type = markedDates[dateString].type;
+                  return `fasted-day fasted-${type}`;
+                }
+                return null;
+              }}
+              tileContent={({ date }) => {
+                const dateString = moment(date).format('YYYY-MM-DD');
+                if (markedDates[dateString]) {
+                  const type = markedDates[dateString].type;
+                  const fastingType = FASTING_TYPES.find(t => t.key === type);
+                  if (fastingType) {
+                    const Icon = fastingType.icon;
+                    return (
+                      <div className="fasting-marker">
+                        <Icon size={16} color={fastingType.color} />
+                      </div>
+                    );
+                  }
+                }
+                return null;
+              }}
+              onActiveStartDateChange={({ activeStartDate }) => {
+                // Ay değiştiğinde o ayın oruçlarını getir
+                const startOfMonth = moment(activeStartDate).startOf('month').format('YYYY-MM-DD');
+                const endOfMonth = moment(activeStartDate).endOf('month').format('YYYY-MM-DD');
+
+                const user = JSON.parse(localStorage.getItem('user'));
+                axios.get(
+                  `${config.api_base}/api/fasting/range?startDate=${startOfMonth}&endDate=${endOfMonth}`,
+                  { headers: { Authorization: `Bearer ${user._id}` } }
+                ).then(response => {
+                  if (response.data.statusCode === 200 && response.data.data) {
+                    const marked = {};
+                    response.data.data.forEach((item) => {
+                      if (item.fasted) {
+                        // Backend'den gelen tarih ISO formatında, YYYY-MM-DD'ye çevir
+                        const dateKey = moment(item.date).format('YYYY-MM-DD');
+                        marked[dateKey] = {
+                          type: item.type,
+                          marked: true
+                        };
+                      }
+                    });
+                    setMarkedDates(marked);
+                  }
+                }).catch(error => {
+                  console.error('Ay oruçları getir hatası:', error);
+                });
+              }}
+            />
+          </div>
+
           {/* Status Card */}
           <div className="status-card">
             {isFasted ? (

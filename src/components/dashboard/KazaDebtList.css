@@ -5,23 +5,46 @@
 }
 
 .kaza-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 32px;
+  margin-bottom: 24px;
+  background: linear-gradient(135deg, #40A2E3 0%, #2E86C1 100%);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(64, 162, 227, 0.2);
 }
 
-.kaza-header h2 {
-  font-size: 32px;
+.kaza-header .header-content {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.kaza-header .header-icon {
+  width: 64px;
+  height: 64px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+  flex-shrink: 0;
+}
+
+.kaza-header .header-info {
+  flex: 1;
+}
+
+.kaza-header .header-info h2 {
+  font-size: 24px;
   font-weight: 700;
-  color: #1F2937;
+  color: white;
   margin: 0 0 8px 0;
 }
 
-.kaza-header .subtitle {
+.kaza-header .header-subtitle {
+  color: rgba(255, 255, 255, 0.9);
   font-size: 14px;
-  color: #6B7280;
-  margin: 0;
+  font-weight: 500;
 }
 
 .add-debt-btn {
@@ -29,20 +52,21 @@
   align-items: center;
   gap: 8px;
   padding: 12px 24px;
-  background: #40A2E3;
-  color: white;
+  background: white;
+  color: #40A2E3;
   border: none;
   border-radius: 12px;
   font-size: 15px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s;
+  flex-shrink: 0;
 }
 
 .add-debt-btn:hover {
-  background: #3691D1;
+  background: rgba(255, 255, 255, 0.9);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(64, 162, 227, 0.3);
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
 }
 
 .empty-state {
@@ -200,8 +224,25 @@
 /* Responsive */
 @media (max-width: 768px) {
   .kaza-header {
+    padding: 20px;
+  }
+
+  .kaza-header .header-content {
     flex-direction: column;
-    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .kaza-header .header-icon {
+    width: 56px;
+    height: 56px;
+  }
+
+  .kaza-header .header-info h2 {
+    font-size: 20px;
+  }
+
+  .kaza-header .header-subtitle {
+    font-size: 12px;
   }
 
   .add-debt-btn {

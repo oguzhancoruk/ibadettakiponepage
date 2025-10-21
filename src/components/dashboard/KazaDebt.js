@@ -5,6 +5,8 @@ import config from '../../config/config.json';
 import moment from 'moment';
 import 'moment/locale/tr';
 import { FiArrowLeft, FiCalendar, FiClock, FiCheckCircle } from 'react-icons/fi';
+import { useLoading } from '../../context/LoadingContext';
+import logo from '../assets/images/1.png';
 import './KazaDebt.css';
 
 moment.locale('tr');
@@ -20,8 +22,8 @@ const PRAYERS = [
 function KazaDebt() {
   const navigate = useNavigate();
   const { debtId } = useParams();
+  const { isLoading, setIsLoading } = useLoading();
   const [debt, setDebt] = useState(null);
-  const [loading, setLoading] = useState(true);
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedPrayer, setSelectedPrayer] = useState(null);
   const [rakatInput, setRakatInput] = useState('');
@@ -31,6 +33,7 @@ function KazaDebt() {
   }, [debtId]);
 
   const fetchDebt = async () => {
+    setIsLoading(true);
     try {
       const user = JSON.parse(localStorage.getItem('user'));
       const response = await axios.get(`${config.api_base}/api/kaza/${debtId}`, {
@@ -43,7 +46,7 @@ function KazaDebt() {
     } catch (error) {
       console.error('Kaza detay yükleme hatası:', error);
     } finally {
-      setLoading(false);
+      setIsLoading(false);
     }
   };
 
@@ -86,8 +89,12 @@ function KazaDebt() {
     return num.toString();
   };
 
-  if (loading) {
-    return <div className="loading">Yükleniyor...</div>;
+  if (isLoading) {
+    return (
+      <div className="page-loading-container">
+        <img src={logo} alt="Loading" className="page-loading-logo" />
+      </div>
+    );
   }
 
   if (!debt) {

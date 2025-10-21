@@ -5,6 +5,9 @@ import config from '../../config/config.json';
 import moment from 'moment';
 import 'moment/locale/tr';
 import { FiPlus, FiTrash2, FiCalendar, FiClock } from 'react-icons/fi';
+import { IoListOutline } from 'react-icons/io5';
+import { useLoading } from '../../context/LoadingContext';
+import logo from '../assets/images/1.png';
 import CreateKazaDebtModal from './CreateKazaDebtModal';
 import './KazaDebtList.css';
 
@@ -12,8 +15,8 @@ moment.locale('tr');
 
 function KazaDebtList() {
   const navigate = useNavigate();
+  const { isLoading, setIsLoading } = useLoading();
   const [debts, setDebts] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [modalVisible, setModalVisible] = useState(false);
 
   useEffect(() => {
@@ -21,6 +24,7 @@ function KazaDebtList() {
   }, []);
 
   const fetchDebts = async () => {
+    setIsLoading(true);
     try {
       const user = JSON.parse(localStorage.getItem('user'));
       const response = await axios.get(`${config.api_base}/api/kaza/list`, {
@@ -33,7 +37,7 @@ function KazaDebtList() {
     } catch (error) {
       console.error('Kaza listesi yükleme hatası:', error);
     } finally {
-      setLoading(false);
+      setIsLoading(false);
     }
   };
 
@@ -63,21 +67,32 @@ function KazaDebtList() {
     }
   };
 
-  if (loading) {
-    return <div className="loading">Yükleniyor...</div>;
+  if (isLoading) {
+    return (
+      <div className="page-loading-container">
+        <img src={logo} alt="Loading" className="page-loading-logo" />
+      </div>
+    );
   }
 
   return (
     <div className="kaza-debt-list-container">
       <div className="kaza-header">
-        <div>
-          <h2>Kaza Borçlarım</h2>
-          <p className="subtitle">{debts.length} adet kaza borcu kaydınız var</p>
+        <div className="header-content">
+          <div className="header-icon">
+            <IoListOutline size={32} color="white" />
+          </div>
+          <div className="header-info">
+            <h2>Kaza Borçlarım</h2>
+            <div className="header-subtitle">
+              <span>{debts.length} adet kaza borcu kaydınız var</span>
+            </div>
+          </div>
+          <button className="add-debt-btn" onClick={() => setModalVisible(true)}>
+            <FiPlus size={20} />
+            Yeni Kaza Borcu
+          </button>
         </div>
-        <button className="add-debt-btn" onClick={() => setModalVisible(true)}>
-          <FiPlus size={20} />
-          Yeni Kaza Borcu
-        </button>
       </div>
 
       {debts.length === 0 ? (

@@ -4,14 +4,16 @@ import config from '../../config/config.json';
 import moment from 'moment';
 import 'moment/locale/tr';
 import { FiX, FiInfo, FiTag, FiCalendar, FiCheckCircle } from 'react-icons/fi';
+import { useLoading } from '../../context/LoadingContext';
 import './CreateKazaDebtModal.css';
 
 moment.locale('tr');
 
 function CreateKazaDebtModal({ isOpen, onClose, onSuccess }) {
+  const { setIsLoading } = useLoading();
   const [name, setName] = useState('');
   const [startDate, setStartDate] = useState(moment().format('YYYY-MM-DD'));
-  const [loading, setLoading] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
   const handleCreate = async () => {
     if (!name.trim()) {
@@ -19,7 +21,8 @@ function CreateKazaDebtModal({ isOpen, onClose, onSuccess }) {
       return;
     }
 
-    setLoading(true);
+    setSubmitting(true);
+    setIsLoading(true);
 
     try {
       const user = JSON.parse(localStorage.getItem('user'));
@@ -47,7 +50,8 @@ function CreateKazaDebtModal({ isOpen, onClose, onSuccess }) {
       console.error('Kaza borcu oluşturma hatası:', error);
       alert('Kaza borcu oluşturulurken bir hata oluştu');
     } finally {
-      setLoading(false);
+      setSubmitting(false);
+      setIsLoading(false);
     }
   };
 
@@ -129,10 +133,10 @@ function CreateKazaDebtModal({ isOpen, onClose, onSuccess }) {
           <button
             className="create-submit-btn"
             onClick={handleCreate}
-            disabled={loading}
+            disabled={submitting}
           >
             <FiCheckCircle size={20} />
-            <span>{loading ? 'Oluşturuluyor...' : 'Kaza Borcu Oluştur'}</span>
+            <span>{submitting ? 'Oluşturuluyor...' : 'Kaza Borcu Oluştur'}</span>
           </button>
           <button className="create-cancel-btn" onClick={onClose}>
             İptal

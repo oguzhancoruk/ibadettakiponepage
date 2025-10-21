@@ -1,0 +1,251 @@
+.features-page {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Hero Section */
+.features-hero {
+  background: linear-gradient(135deg, #40A2E3 0%, #2E86C1 100%);
+  color: white;
+  padding: 80px 24px 60px;
+  text-align: center;
+}
+
+.features-hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.features-hero h1 {
+  font-size: 48px;
+  font-weight: 800;
+  margin: 0 0 16px 0;
+  line-height: 1.2;
+}
+
+.features-hero p {
+  font-size: 20px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 400;
+}
+
+/* Main Features Section */
+.main-features-section {
+  padding: 80px 24px;
+  background: #F9FAFB;
+}
+
+.features-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  gap: 32px;
+}
+
+.feature-detail-card {
+  background: white;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  display: flex;
+  gap: 24px;
+  transition: all 0.3s;
+}
+
+.feature-detail-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(64, 162, 227, 0.2);
+}
+
+.feature-detail-icon {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, rgba(64, 162, 227, 0.1) 0%, rgba(46, 134, 193, 0.1) 100%);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.feature-detail-content {
+  flex: 1;
+}
+
+.feature-detail-content h3 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1F2937;
+  margin: 0 0 12px 0;
+}
+
+.feature-detail-content > p {
+  font-size: 16px;
+  color: #6B7280;
+  line-height: 1.7;
+  margin: 0 0 20px 0;
+}
+
+.feature-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.feature-list li {
+  font-size: 15px;
+  color: #4B5563;
+  line-height: 2;
+  padding-left: 24px;
+  position: relative;
+}
+
+.feature-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #40A2E3;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+/* CTA Section */
+.features-cta {
+  background: linear-gradient(135deg, #40A2E3 0%, #2E86C1 100%);
+  color: white;
+  padding: 80px 24px;
+  text-align: center;
+}
+
+.features-cta-content {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.features-cta-content h2 {
+  font-size: 42px;
+  font-weight: 800;
+  margin: 0 0 16px 0;
+}
+
+.features-cta-content p {
+  font-size: 18px;
+  line-height: 1.7;
+  margin: 0 0 32px 0;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.features-cta-btn {
+  background: white;
+  color: #40A2E3;
+  border: none;
+  padding: 18px 48px;
+  font-size: 20px;
+  font-weight: 700;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.features-cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .features-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .features-hero {
+    padding: 60px 20px 40px;
+  }
+
+  .features-hero h1 {
+    font-size: 32px;
+  }
+
+  .features-hero p {
+    font-size: 16px;
+  }
+
+  .main-features-section {
+    padding: 60px 20px;
+  }
+
+  .features-container {
+    gap: 24px;
+  }
+
+  .feature-detail-card {
+    padding: 32px 24px;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .feature-detail-icon {
+    margin: 0 auto;
+  }
+
+  .feature-list li {
+    text-align: left;
+  }
+
+  .features-cta {
+    padding: 60px 20px;
+  }
+
+  .features-cta-content h2 {
+    font-size: 32px;
+  }
+
+  .features-cta-content p {
+    font-size: 16px;
+  }
+
+  .features-cta-btn {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .features-hero h1 {
+    font-size: 26px;
+  }
+
+  .features-hero p {
+    font-size: 14px;
+  }
+
+  .feature-detail-card {
+    padding: 24px 20px;
+  }
+
+  .feature-detail-content h3 {
+    font-size: 20px;
+  }
+
+  .feature-detail-content > p {
+    font-size: 14px;
+  }
+
+  .feature-list li {
+    font-size: 14px;
+  }
+
+  .features-cta-content h2 {
+    font-size: 26px;
+  }
+
+  .features-cta-btn {
+    font-size: 16px;
+    padding: 14px 36px;
+  }
+}

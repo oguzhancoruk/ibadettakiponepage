@@ -5,36 +5,61 @@
 }
 
 .fasting-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 32px;
+  margin-bottom: 24px;
+  background: linear-gradient(135deg, #40A2E3 0%, #2E86C1 100%);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(64, 162, 227, 0.2);
 }
 
-.fasting-header h2 {
-  font-size: 32px;
+.fasting-header .header-content {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.fasting-header .header-icon {
+  width: 64px;
+  height: 64px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+  flex-shrink: 0;
+}
+
+.fasting-header .header-info {
+  flex: 1;
+}
+
+.fasting-header .header-info h2 {
+  font-size: 24px;
   font-weight: 700;
-  color: #1F2937;
+  color: white;
   margin: 0 0 8px 0;
 }
 
-.fasting-subtitle {
-  font-size: 16px;
-  color: #6B7280;
-  margin: 0;
+.fasting-header .header-date {
   display: flex;
   align-items: center;
   gap: 12px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: capitalize;
 }
 
 .today-badge {
   display: inline-block;
-  background: #40A2E3;
+  background: rgba(255, 255, 255, 0.3);
   color: white;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 600;
   padding: 4px 12px;
   border-radius: 12px;
+  backdrop-filter: blur(10px);
 }
 
 .date-input-wrapper {
@@ -44,15 +69,17 @@
   background: white;
   padding: 12px 16px;
   border-radius: 12px;
-  border: 1px solid #E5E7EB;
+  flex-shrink: 0;
+  color: #40A2E3;
 }
 
 .date-input-wrapper input[type="date"] {
   border: none;
-  font-size: 15px;
+  font-size: 14px;
   color: #1F2937;
   outline: none;
   cursor: pointer;
+  font-weight: 500;
 }
 
 .fasting-content {
@@ -65,6 +92,174 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
+}
+
+/* Calendar Card */
+.calendar-card {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.calendar-card .react-calendar {
+  width: 100%;
+  border: none;
+  font-family: inherit;
+}
+
+.calendar-card .react-calendar__navigation {
+  display: flex;
+  height: 44px;
+  margin-bottom: 16px;
+}
+
+.calendar-card .react-calendar__navigation button {
+  min-width: 44px;
+  background: none;
+  border: none;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1F2937;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.calendar-card .react-calendar__navigation button:enabled:hover,
+.calendar-card .react-calendar__navigation button:enabled:focus {
+  background-color: #F3F4F6;
+  border-radius: 8px;
+}
+
+.calendar-card .react-calendar__navigation button:disabled {
+  background-color: transparent;
+  color: #9CA3AF;
+}
+
+.calendar-card .react-calendar__month-view__weekdays {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 11px;
+  color: #6B7280;
+  margin-bottom: 8px;
+}
+
+.calendar-card .react-calendar__month-view__weekdays__weekday {
+  padding: 8px 0;
+}
+
+.calendar-card .react-calendar__month-view__weekdays__weekday abbr {
+  text-decoration: none;
+}
+
+.calendar-card .react-calendar__tile {
+  max-width: 100%;
+  padding: 12px 6px;
+  background: none;
+  text-align: center;
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  color: #1F2937;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.3s;
+}
+
+.calendar-card .react-calendar__tile:enabled:hover,
+.calendar-card .react-calendar__tile:enabled:focus {
+  background-color: #E8F4FD;
+  color: #40A2E3;
+}
+
+.calendar-card .react-calendar__tile--now {
+  background: #FEF3C7;
+  color: #D97706;
+  font-weight: 700;
+}
+
+.calendar-card .react-calendar__tile--now:enabled:hover,
+.calendar-card .react-calendar__tile--now:enabled:focus {
+  background: #FDE68A;
+}
+
+.calendar-card .react-calendar__tile--active {
+  background: #40A2E3 !important;
+  color: white !important;
+  font-weight: 700;
+}
+
+.calendar-card .react-calendar__tile--active:enabled:hover,
+.calendar-card .react-calendar__tile--active:enabled:focus {
+  background: #3691D1 !important;
+}
+
+.calendar-card .react-calendar__tile--hasActive {
+  background: #E8F4FD;
+}
+
+.calendar-card .react-calendar__tile--rangeStart,
+.calendar-card .react-calendar__tile--rangeEnd {
+  background: #40A2E3;
+  color: white;
+}
+
+.calendar-card .react-calendar__month-view__days__day--neighboringMonth {
+  color: #D1D5DB;
+}
+
+.calendar-card .react-calendar__tile:disabled {
+  background-color: #F9FAFB;
+  color: #D1D5DB;
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.calendar-card .react-calendar__tile:disabled:hover {
+  background-color: #F9FAFB;
+  opacity: 0.5;
+}
+
+.calendar-card .react-calendar__year-view .react-calendar__tile,
+.calendar-card .react-calendar__decade-view .react-calendar__tile,
+.calendar-card .react-calendar__century-view .react-calendar__tile {
+  padding: 20px 6px;
+}
+
+/* Fasted Days Markers */
+.fasting-marker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 4px;
+}
+
+.calendar-card .react-calendar__tile.fasted-day {
+  position: relative;
+}
+
+.calendar-card .react-calendar__tile.fasted-ramadan {
+  background-color: rgba(155, 89, 182, 0.15);
+  color: #9B59B6;
+  font-weight: 700;
+}
+
+.calendar-card .react-calendar__tile.fasted-kaza {
+  background-color: rgba(230, 126, 34, 0.15);
+  color: #E67E22;
+  font-weight: 700;
+}
+
+.calendar-card .react-calendar__tile.fasted-voluntary {
+  background-color: rgba(52, 152, 219, 0.15);
+  color: #3498DB;
+  font-weight: 700;
+}
+
+.calendar-card .react-calendar__tile.fasted-day:enabled:hover,
+.calendar-card .react-calendar__tile.fasted-day:enabled:focus {
+  opacity: 0.8;
 }
 
 .status-card {
@@ -429,12 +624,40 @@
 
 @media (max-width: 640px) {
   .fasting-header {
-    flex-direction: column;
-    gap: 16px;
+    padding: 20px;
   }
 
-  .date-input-wrapper {
-    width: 100%;
+  .fasting-header .header-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .fasting-header .header-icon {
+    width: 56px;
+    height: 56px;
+  }
+
+  .fasting-header .header-info h2 {
+    font-size: 20px;
+  }
+
+  .fasting-header .header-date {
+    font-size: 12px;
+    flex-wrap: wrap;
+  }
+
+  .today-badge {
+    font-size: 10px;
+    padding: 3px 10px;
+  }
+
+  .calendar-card {
+    padding: 16px;
+  }
+
+  .calendar-card .react-calendar__tile {
+    padding: 10px 4px;
+    font-size: 13px;
   }
 
   .stats-grid {
