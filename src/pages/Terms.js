@@ -129,7 +129,7 @@ function Terms() {
               Kullanım şartları hakkında sorularınız için:
             </p>
             <p className="contact-email">
-              <strong>E-posta:</strong> <a href="mailto:oguzcoruk6161@gmail.com">oguzcoruk6161@gmail.com</a>
+              <strong>E-posta:</strong> <a href="mailto:info@prayertrack.app">info@prayertrack.app</a>
             </p>
           </section>
 

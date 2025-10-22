@@ -33,7 +33,7 @@ function Contact() {
               </div>
               <div className="method-info">
                 <h4>E-posta</h4>
-                <a href="mailto:oguzcoruk6161@gmail.com">oguzcoruk6161@gmail.com</a>
+                <a href="mailto:info@prayertrack.app">info@prayertrack.app</a>
                 <p>7/24 e-posta ile ulaşabilirsiniz.</p>
               </div>
             </div>

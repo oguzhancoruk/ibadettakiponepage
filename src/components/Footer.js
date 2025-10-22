@@ -40,7 +40,7 @@ function Footer() {
             <div className="contact-info">
               <div className="contact-item">
                 <span className="contact-label">E-posta:</span>
-                <a href="mailto:oguzcoruk6161@gmail.com">oguzcoruk6161@gmail.com</a>
+                <a href="mailto:info@prayertrack.app">info@prayertrack.app</a>
               </div>
             </div>
           </div>

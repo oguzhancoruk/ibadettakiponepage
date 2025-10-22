@@ -5,6 +5,8 @@ import Features from './components/Features';
 import Footer from './components/Footer';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import ForgotPassword from './pages/ForgotPassword';
+import ResetPassword from './pages/ResetPassword';
 import Dashboard from './pages/Dashboard';
 import DashboardHome from './components/dashboard/DashboardHome';
 import DailyPrayer from './components/dashboard/DailyPrayer';
@@ -33,6 +35,20 @@ function App() {
           <>
             <Header />
             <Register />
+            <Footer />
+          </>
+        } />
+        <Route path="/forgot-password" element={
+          <>
+            <Header />
+            <ForgotPassword />
+            <Footer />
+          </>
+        } />
+        <Route path="/reset-password" element={
+          <>
+            <Header />
+            <ResetPassword />
             <Footer />
           </>
         } />

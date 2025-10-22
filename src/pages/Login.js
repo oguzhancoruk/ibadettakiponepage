@@ -110,6 +110,13 @@ function Login() {
             </button>
           </div>
 
+          {/* Forgot Password Link */}
+          <div className="forgot-password-link">
+            <span onClick={() => navigate('/forgot-password')} className="link-text">
+              Şifremi Unuttum
+            </span>
+          </div>
+
           {/* Login Button */}
           <button
             type="submit"
