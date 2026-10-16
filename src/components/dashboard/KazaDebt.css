@@ -15,8 +15,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: white;
-  border: 1px solid #E5E7EB;
+  background: var(--pt-surface, white);
+  border: 1px solid #e5e7eb;
   border-radius: 12px;
   padding: 12px;
   cursor: pointer;
@@ -24,19 +24,19 @@
 }
 
 .back-btn:hover {
-  background: #F9FAFB;
-  border-color: #D1D5DB;
+  background: var(--pt-soft, #f9fafb);
+  border-color: #d1d5db;
 }
 
 .kaza-debt-header h2 {
   font-size: 32px;
   font-weight: 700;
-  color: #1F2937;
+  color: var(--pt-text, #1f2937);
   margin: 0;
 }
 
 .summary-card {
-  background: white;
+  background: var(--pt-surface, white);
   border-radius: 16px;
   padding: 24px;
   margin-bottom: 32px;
@@ -49,13 +49,13 @@
   align-items: center;
   gap: 8px;
   font-size: 14px;
-  color: #6B7280;
+  color: var(--pt-muted-text, #6b7280);
   margin-bottom: 8px;
 }
 
 .summary-days {
   font-size: 13px;
-  color: #9CA3AF;
+  color: #9ca3af;
   margin-bottom: 20px;
 }
 
@@ -63,7 +63,7 @@
   display: flex;
   justify-content: space-around;
   padding-top: 20px;
-  border-top: 1px solid #E5E7EB;
+  border-top: 1px solid #e5e7eb;
 }
 
 .summary-stat {
@@ -76,26 +76,26 @@
 .summary-stat-value {
   font-size: 28px;
   font-weight: 700;
-  color: #40A2E3;
+  color: var(--pt-readable-green, #0d7548);
 }
 
 .summary-stat-value.success {
-  color: #10B981;
+  color: #10b981;
 }
 
 .summary-stat-value.danger {
-  color: #DC2626;
+  color: #dc2626;
 }
 
 .summary-stat-label {
   font-size: 14px;
-  color: #6B7280;
+  color: var(--pt-muted-text, #6b7280);
   font-weight: 500;
 }
 
 .summary-stat-divider {
   width: 1px;
-  background: #E5E7EB;
+  background: var(--pt-soft, #e5e7eb);
   align-self: stretch;
 }
 
@@ -106,7 +106,7 @@
 }
 
 .prayer-detail-card {
-  background: white;
+  background: var(--pt-surface, white);
   border-radius: 16px;
   padding: 24px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -144,13 +144,13 @@
 .prayer-detail-info h3 {
   font-size: 20px;
   font-weight: 700;
-  color: #1F2937;
+  color: var(--pt-text, #1f2937);
   margin: 0 0 4px 0;
 }
 
 .remaining-text {
   font-size: 14px;
-  color: #DC2626;
+  color: #dc2626;
   font-weight: 500;
   margin: 0;
 }
@@ -165,7 +165,7 @@
 .progress-bar {
   flex: 1;
   height: 12px;
-  background: #E5E7EB;
+  background: var(--pt-soft, #e5e7eb);
   border-radius: 6px;
   overflow: hidden;
 }
@@ -178,7 +178,7 @@
 .progress-percentage {
   font-size: 16px;
   font-weight: 700;
-  color: #1F2937;
+  color: var(--pt-text, #1f2937);
   min-width: 45px;
   text-align: right;
 }
@@ -187,7 +187,7 @@
   display: flex;
   justify-content: space-around;
   padding: 16px;
-  background: #F9FAFB;
+  background: var(--pt-soft, #f9fafb);
   border-radius: 12px;
   margin-bottom: 16px;
 }
@@ -201,26 +201,26 @@
 
 .prayer-stat-label {
   font-size: 12px;
-  color: #6B7280;
+  color: var(--pt-muted-text, #6b7280);
   font-weight: 500;
 }
 
 .prayer-stat-value {
   font-size: 18px;
   font-weight: 700;
-  color: #1F2937;
+  color: var(--pt-text, #1f2937);
 }
 
 .prayer-stat-value.primary {
-  color: #40A2E3;
+  color: var(--pt-readable-green, #0d7548);
 }
 
 .prayer-stat-value.success {
-  color: #10B981;
+  color: #10b981;
 }
 
 .prayer-stat-value.danger {
-  color: #DC2626;
+  color: #dc2626;
 }
 
 .prayed-btn {
@@ -259,7 +259,7 @@
 }
 
 .modal-content {
-  background: white;
+  background: var(--pt-surface, white);
   border-radius: 16px;
   padding: 24px;
   width: 90%;
@@ -270,13 +270,13 @@
 .modal-content h3 {
   font-size: 22px;
   font-weight: 700;
-  color: #1F2937;
+  color: var(--pt-text, #1f2937);
   margin: 0 0 8px 0;
 }
 
 .modal-description {
   font-size: 14px;
-  color: #6B7280;
+  color: var(--pt-muted-text, #6b7280);
   margin: 0 0 20px 0;
   line-height: 1.5;
 }
@@ -284,7 +284,7 @@
 .modal-input {
   width: 100%;
   padding: 12px 16px;
-  border: 1px solid #D1D5DB;
+  border: 1px solid #d1d5db;
   border-radius: 10px;
   font-size: 16px;
   margin-bottom: 20px;
@@ -293,7 +293,7 @@
 
 .modal-input:focus {
   outline: none;
-  border-color: #40A2E3;
+  border-color: #0d7548;
 }
 
 .modal-buttons {
@@ -312,23 +312,23 @@
 }
 
 .cancel-btn {
-  background: #F9FAFB;
-  border: 1px solid #D1D5DB;
-  color: #6B7280;
+  background: var(--pt-soft, #f9fafb);
+  border: 1px solid #d1d5db;
+  color: var(--pt-muted-text, #6b7280);
 }
 
 .cancel-btn:hover {
-  background: #F3F4F6;
+  background: var(--pt-soft, #f3f4f6);
 }
 
 .confirm-btn {
-  background: #40A2E3;
+  background: #0d7548;
   border: none;
   color: white;
 }
 
 .confirm-btn:hover {
-  background: #3691D1;
+  background: #075e39;
 }
 
 /* Responsive */

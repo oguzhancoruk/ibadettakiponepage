@@ -1,0 +1,389 @@
+.pt-section-gap {
+  margin-top: 24px;
+}
+.pt-grow {
+  flex: 1;
+  min-width: 0;
+}
+.pt-extended-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+.pt-extended-grid .pt-panel h2 {
+  font-size: 20px;
+  line-height: 1.4;
+  margin: 12px 0;
+}
+.pt-form-stack,
+.pt-journal-form fieldset {
+  display: grid;
+  gap: 20px;
+}
+.pt-form-stack > .pt-button {
+  justify-self: start;
+}
+.pt-pre-line {
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
+.pt-checkbox {
+  display: flex;
+  gap: 9px;
+  align-items: center;
+  font-size: 13px;
+  color: var(--pt-body-text, #526b5a);
+}
+.pt-checkbox input,
+.pt-notification-options input {
+  accent-color: #0d7548;
+}
+.pt-report-controls {
+  align-items: end;
+  margin-bottom: 24px;
+}
+.pt-report-controls .pt-field {
+  max-width: 190px;
+}
+.pt-report-title {
+  margin-bottom: 20px;
+}
+.pt-metric-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 0;
+  border-bottom: 1px solid var(--pt-line, #e7ebe6);
+  font-size: 14px;
+}
+.pt-trend-row {
+  display: grid;
+  grid-template-columns: minmax(65px, 1fr) minmax(60px, 1.5fr) 35px;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  font-size: 12px;
+}
+.pt-trend-row progress {
+  width: 100%;
+  accent-color: #0d7548;
+}
+.pt-print-only {
+  display: none;
+}
+.pt-journal-form {
+  max-width: 850px;
+}
+.pt-journal-form fieldset {
+  border: 0;
+  padding: 0;
+  min-width: 0;
+}
+.pt-journal-form legend {
+  font-size: 14px;
+  margin: 20px 0 12px;
+}
+.pt-journal-form input[type="range"] {
+  padding: 0;
+  accent-color: #0d7548;
+}
+.pt-mood-options {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 9px;
+}
+.pt-mood-options button {
+  border: 1px solid var(--pt-line, #e7ebe6);
+  border-radius: 16px;
+  padding: 16px 4px;
+  background: var(--pt-bg, #f8f6f1);
+  color: var(--pt-body-text, #526b5a);
+  display: grid;
+  gap: 12px;
+  justify-items: center;
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+.pt-mood-options button span {
+  font-size: 25px;
+}
+.pt-mood-options button.active {
+  border-color: #0d7548;
+  background: var(--pt-soft, #edf3e9);
+  color: var(--pt-readable-green, #0d7548);
+}
+.pt-history-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid var(--pt-line, #e7ebe6);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 13px;
+  padding: 18px 0;
+  text-align: left;
+  cursor: pointer;
+}
+.pt-qibla-panel {
+  max-width: 600px;
+  margin: 24px auto;
+  text-align: center;
+}
+.pt-compass {
+  width: 260px;
+  height: 260px;
+  border: 2px solid var(--pt-line, #e7ebe6);
+  border-radius: 50%;
+  position: relative;
+  margin: 20px auto 30px;
+  background: repeating-conic-gradient(
+    from -1deg,
+    #9db49b 0deg 1deg,
+    transparent 1deg 30deg
+  );
+  box-shadow: inset 0 0 0 14px var(--pt-bg, #f8f6f1);
+}
+.pt-compass > span {
+  position: absolute;
+  font-size: 12px;
+  font-weight: 700;
+}
+.pt-compass-north {
+  top: 24px;
+  left: calc(50% - 5px);
+}
+.pt-compass-east {
+  right: 24px;
+  top: calc(50% - 5px);
+}
+.pt-compass-south {
+  bottom: 24px;
+  left: calc(50% - 5px);
+}
+.pt-compass-west {
+  left: 24px;
+  top: calc(50% - 5px);
+}
+.pt-compass-needle {
+  position: absolute;
+  inset: 46px;
+  display: flex;
+  justify-content: center;
+  transform-origin: center;
+  transition: transform 0.2s;
+}
+.pt-compass-needle span {
+  color: var(--pt-readable-green, #0d7548);
+  font-size: 50px;
+  line-height: 1;
+}
+.pt-compass .pt-compass-center {
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: var(--pt-readable-green, #0d7548);
+  font-size: 30px;
+}
+.pt-mosque-map {
+  width: 100%;
+  height: 380px;
+  border: 1px solid var(--pt-line, #e7ebe6);
+  border-radius: 20px;
+}
+.pt-guide-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+.pt-guide-grid img {
+  height: 180px;
+  width: 100%;
+  object-fit: contain;
+  margin-bottom: 18px;
+}
+.pt-guide-grid h3 {
+  font-size: 16px;
+}
+.pt-guide-sequence {
+  padding-left: 24px;
+  font-size: 14px;
+  line-height: 2.2;
+  margin: 20px 0;
+}
+.pt-guide-detail {
+  border-top: 1px solid var(--pt-line, #e7ebe6);
+  padding: 18px 0;
+  font-size: 14px;
+}
+.pt-guide-detail summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+.pt-notification-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  border: 1px solid var(--pt-line, #e7ebe6);
+  padding: 20px;
+  border-radius: 12px;
+  margin: 24px 0;
+}
+.pt-notification-options label {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-size: 13px;
+}
+.pt-notification-options legend {
+  font-size: 13px;
+}
+.pt-support-reply {
+  border-left: 3px solid #0d7548;
+  padding: 18px;
+  background: var(--pt-soft, #edf3e9);
+  font-size: 14px;
+  line-height: 1.8;
+}
+.pt-danger-button {
+  background: #a13b26 !important;
+}
+.pt-quran-results {
+  max-height: 480px;
+  overflow-y: auto;
+  margin-top: 20px;
+}
+.pt-quran-results article {
+  padding: 18px 0;
+  border-top: 1px solid var(--pt-line, #e7ebe6);
+}
+.pt-quran-results h3 {
+  font-size: 14px;
+}
+.pt-audio-player {
+  margin: 20px 0;
+}
+.pt-audio-player audio {
+  width: 100%;
+  margin-top: 20px;
+}
+.pt-reader-large .pt-arabic {
+  font-size: 40px !important;
+}
+.pt-reader-large .pt-verse > p:not(.pt-arabic) {
+  font-size: 19px;
+}
+.pt-offline-banner {
+  padding: 12px 20px;
+  background: #fff2cf;
+  color: #644d16;
+  text-align: center;
+  font-size: 13px;
+  position: relative;
+  z-index: 100;
+}
+@media (max-width: 800px) {
+  .pt-guide-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 600px) {
+  .pt-extended-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .pt-mood-options {
+    gap: 5px;
+  }
+  .pt-mood-options button {
+    font-size: 10px;
+    padding: 12px 2px;
+  }
+  .pt-guide-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .pt-guide-grid img {
+    height: 220px;
+  }
+  .pt-topbar-title {
+    display: none;
+  }
+  .pt-topbar .pt-user-pill {
+    margin-left: auto;
+  }
+  .pt-mosque-map {
+    height: 300px;
+  }
+  .pt-report-controls .pt-field {
+    max-width: none;
+    flex: 1;
+    min-width: 80px;
+  }
+  .pt-compass {
+    width: 230px;
+    height: 230px;
+  }
+}
+@media print {
+  @page {
+    size: A4;
+    margin: 16mm;
+  }
+  html,
+  body,
+  .App,
+  .pt-app {
+    background: var(--pt-surface, white) !important;
+    color: black !important;
+  }
+  .pt-sidebar,
+  .pt-topbar,
+  .pt-bottom-nav,
+  .pt-app-footer,
+  .pt-page-heading,
+  .pt-back-link,
+  .pt-community-nav,
+  .pt-report-controls,
+  .pt-offline-banner {
+    display: none !important;
+  }
+  .pt-app,
+  .pt-main,
+  .pt-workspace {
+    padding: 0 !important;
+    margin: 0 !important;
+    min-height: 0 !important;
+  }
+  .pt-report {
+    font-family: Arial, sans-serif;
+    font-size: 11pt;
+  }
+  .pt-report .pt-panel,
+  .pt-report .pt-community-stats {
+    break-inside: avoid;
+    background: var(--pt-surface, white) !important;
+    color: black !important;
+    box-shadow: none;
+    border-color: #ddd;
+  }
+  .pt-report .pt-note,
+  .pt-report .pt-eyebrow,
+  .pt-report .pt-community-stats span {
+    color: #444 !important;
+  }
+  .pt-report .pt-extended-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .pt-print-only {
+    display: block;
+    font-size: 10pt;
+    margin-top: 16px;
+  }
+}
+@media print {
+  .pt-report .pt-community-stats {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}

@@ -1,14 +1,5 @@
-import { Navigate } from 'react-router-dom';
-
-function ProtectedRoute({ children }) {
-  const user = localStorage.getItem('user');
-
-  if (!user) {
-    // Kullanıcı giriş yapmamışsa login sayfasına yönlendir
-    return <Navigate to="/login" replace />;
-  }
-
-  return children;
+import { Navigate } from "react-router-dom";
+import { getSession } from "../utils/session";
+export default function ProtectedRoute({ children }) {
+  return getSession() ? children : <Navigate to="/login" replace />;
 }
-
-export default ProtectedRoute;

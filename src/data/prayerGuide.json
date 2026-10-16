@@ -1,0 +1,425 @@
+{
+  "PRAYERS": [
+    {
+      "key": "sabah",
+      "title": "Sabah",
+      "fullTitle": "Sabah Namazı",
+      "icon": "weather-sunset-up",
+      "color": "#0B8750",
+      "summary": "2 sünnet + 2 farz olarak kılınır.",
+      "rakats": "4 Rekat",
+      "rakatDetail": "2 sünnet + 2 farz",
+      "time": "Güneş doğmadan önce",
+      "recitation": "Fatiha + Kısa sure",
+      "sequence": [
+        {
+          "label": "Önce",
+          "title": "2 rekat sünnet kılınır"
+        },
+        {
+          "label": "Sonra",
+          "title": "2 rekat farz kılınır"
+        }
+      ],
+      "recitationDetails": [
+        {
+          "title": "2 rekat sünnet",
+          "lines": [
+            "1. ve 2. rekâtta Fatiha’dan sonra zammı sûre okunur.",
+            "2. rekât sonunda oturulur, dualar okunur ve selam verilir."
+          ]
+        },
+        {
+          "title": "2 rekat farz",
+          "lines": [
+            "1. ve 2. rekâtta Fatiha’dan sonra zammı sûre okunur.",
+            "Farz namaz ayrı niyetle kılınır ve son oturuşla tamamlanır."
+          ]
+        }
+      ]
+    },
+    {
+      "key": "ogle",
+      "title": "Öğle",
+      "fullTitle": "Öğle Namazı",
+      "icon": "white-balance-sunny",
+      "color": "#F2A51A",
+      "summary": "4 sünnet + 4 farz + 2 son sünnet olarak kılınır.",
+      "rakats": "10 Rekat",
+      "rakatDetail": "4 sünnet + 4 farz + 2 sünnet",
+      "time": "Öğle vakti",
+      "recitation": "Fatiha + Kısa sure",
+      "sequence": [
+        {
+          "label": "Önce",
+          "title": "4 rekat ilk sünnet kılınır"
+        },
+        {
+          "label": "Sonra",
+          "title": "4 rekat farz kılınır"
+        },
+        {
+          "label": "Ardından",
+          "title": "2 rekat son sünnet kılınır"
+        }
+      ],
+      "recitationDetails": [
+        {
+          "title": "4 rekat ilk sünnet",
+          "lines": [
+            "Her rekâtta Fatiha’dan sonra zammı sûre okunur.",
+            "2. rekât oturuşundan sonra 3. rekâta kalkılır; 4. rekât sonunda selam verilir."
+          ]
+        },
+        {
+          "title": "4 rekat farz",
+          "lines": [
+            "1. ve 2. rekâtta Fatiha’dan sonra zammı sûre okunur.",
+            "3. ve 4. rekâtta yalnız Fatiha okunur; zammı sûre okunmaz."
+          ]
+        },
+        {
+          "title": "2 rekat son sünnet",
+          "lines": [
+            "Her iki rekâtta Fatiha’dan sonra zammı sûre okunur."
+          ]
+        }
+      ]
+    },
+    {
+      "key": "ikindi",
+      "title": "İkindi",
+      "fullTitle": "İkindi Namazı",
+      "icon": "weather-sunset",
+      "color": "#3F6F8A",
+      "summary": "4 sünnet + 4 farz olarak kılınır.",
+      "rakats": "8 Rekat",
+      "rakatDetail": "4 sünnet + 4 farz",
+      "time": "İkindi vakti",
+      "recitation": "Fatiha + Kısa sure",
+      "sequence": [
+        {
+          "label": "Önce",
+          "title": "4 rekat sünnet kılınır"
+        },
+        {
+          "label": "Sonra",
+          "title": "4 rekat farz kılınır"
+        }
+      ],
+      "recitationDetails": [
+        {
+          "title": "4 rekat sünnet",
+          "lines": [
+            "Her rekâtta Fatiha’dan sonra zammı sûre okunur.",
+            "2. rekât oturuşunda Ettehiyyatü ve Salli-Barik okunur; 3. rekâta Sübhaneke ile başlanır."
+          ]
+        },
+        {
+          "title": "4 rekat farz",
+          "lines": [
+            "1. ve 2. rekâtta Fatiha’dan sonra zammı sûre okunur.",
+            "3. ve 4. rekâtta yalnız Fatiha okunur; zammı sûre okunmaz."
+          ]
+        }
+      ]
+    },
+    {
+      "key": "aksam",
+      "title": "Akşam",
+      "fullTitle": "Akşam Namazı",
+      "icon": "weather-sunset-down",
+      "color": "#EF8A4B",
+      "summary": "3 farz + 2 sünnet olarak kılınır.",
+      "rakats": "5 Rekat",
+      "rakatDetail": "3 farz + 2 sünnet",
+      "time": "Güneş battıktan sonra",
+      "recitation": "Fatiha + Kısa sure",
+      "sequence": [
+        {
+          "label": "Önce",
+          "title": "3 rekat farz kılınır"
+        },
+        {
+          "label": "Sonra",
+          "title": "2 rekat sünnet kılınır"
+        }
+      ],
+      "recitationDetails": [
+        {
+          "title": "3 rekat farz",
+          "lines": [
+            "1. ve 2. rekâtta Fatiha’dan sonra zammı sûre okunur.",
+            "3. rekâtta yalnız Fatiha okunur; zammı sûre okunmaz."
+          ]
+        },
+        {
+          "title": "2 rekat sünnet",
+          "lines": [
+            "Her iki rekâtta Fatiha’dan sonra zammı sûre okunur."
+          ]
+        }
+      ]
+    },
+    {
+      "key": "yatsi",
+      "title": "Yatsı",
+      "fullTitle": "Yatsı Namazı",
+      "icon": "weather-night",
+      "color": "#466591",
+      "summary": "4 sünnet + 4 farz + 2 sünnet + 3 vitir olarak kılınır.",
+      "rakats": "13 Rekat",
+      "rakatDetail": "4 sünnet + 4 farz + 2 sünnet + 3 vitir",
+      "time": "Yatsı vakti",
+      "recitation": "Fatiha + Kısa sure",
+      "sequence": [
+        {
+          "label": "Önce",
+          "title": "4 rekat ilk sünnet kılınır"
+        },
+        {
+          "label": "Sonra",
+          "title": "4 rekat farz kılınır"
+        },
+        {
+          "label": "Ardından",
+          "title": "2 rekat son sünnet kılınır"
+        },
+        {
+          "label": "Son",
+          "title": "3 rekat vitir namazı kılınır"
+        }
+      ],
+      "recitationDetails": [
+        {
+          "title": "4 rekat ilk sünnet",
+          "lines": [
+            "Her rekâtta Fatiha’dan sonra zammı sûre okunur.",
+            "2. rekât oturuşunda Ettehiyyatü ve Salli-Barik okunur; 3. rekâta Sübhaneke ile başlanır."
+          ]
+        },
+        {
+          "title": "4 rekat farz",
+          "lines": [
+            "1. ve 2. rekâtta Fatiha’dan sonra zammı sûre okunur.",
+            "3. ve 4. rekâtta yalnız Fatiha okunur; zammı sûre okunmaz."
+          ]
+        },
+        {
+          "title": "2 rekat son sünnet",
+          "lines": [
+            "Her iki rekâtta Fatiha’dan sonra zammı sûre okunur."
+          ]
+        },
+        {
+          "title": "3 rekat vitir",
+          "lines": [
+            "Her rekâtta Fatiha’dan sonra zammı sûre okunur.",
+            "3. rekâtta zammı sûreden sonra tekbir alınır ve Kunut duaları okunur."
+          ]
+        }
+      ]
+    },
+    {
+      "key": "ishraq",
+      "title": "İşrak",
+      "fullTitle": "İşrak Namazı",
+      "icon": "white-balance-sunny",
+      "color": "#FF6B6B",
+      "summary": "Güneş doğup kerahet vakti çıktıktan sonra kılınır.",
+      "rakats": "2-4 Rekat",
+      "rakatDetail": "2 veya 4 rekat nafile",
+      "time": "Sabah sonrası",
+      "recitation": "Fatiha + Kısa sure",
+      "sequence": [
+        {
+          "label": "Kerahet sonrası",
+          "title": "2 rekat nafile kılınır"
+        },
+        {
+          "label": "İsteğe bağlı",
+          "title": "4 rekata tamamlanabilir"
+        }
+      ],
+      "recitationDetails": [
+        {
+          "title": "Nafile okuma",
+          "lines": [
+            "Her rekâtta Fatiha’dan sonra zammı sûre okunur.",
+            "4 rekât kılınacaksa ikişer rekâtla tamamlanması uygundur."
+          ]
+        }
+      ]
+    },
+    {
+      "key": "duha",
+      "title": "Kuşluk",
+      "fullTitle": "Kuşluk (Duha) Namazı",
+      "icon": "white-balance-sunny",
+      "color": "#F2A51A",
+      "summary": "Güneş yükseldikten sonra öğle vaktinden önce kılınır.",
+      "rakats": "2-8 Rekat",
+      "rakatDetail": "2, 4, 6 veya 8 rekat",
+      "time": "Kuşluk vakti",
+      "recitation": "Fatiha + Kısa sure",
+      "sequence": [
+        {
+          "label": "Başlangıç",
+          "title": "2 rekat nafile kılınır"
+        },
+        {
+          "label": "Devam",
+          "title": "İstenirse ikişer rekatla artırılır"
+        }
+      ],
+      "recitationDetails": [
+        {
+          "title": "Nafile okuma",
+          "lines": [
+            "Her rekâtta Fatiha’dan sonra zammı sûre okunur.",
+            "2 rekâttan sonra istenirse ikişer rekâtla artırılır."
+          ]
+        }
+      ]
+    },
+    {
+      "key": "awwabin",
+      "title": "Evvabin",
+      "fullTitle": "Evvabin Namazı",
+      "icon": "weather-sunset-down",
+      "color": "#9B59B6",
+      "summary": "Akşam namazından sonra yatsıdan önce kılınır.",
+      "rakats": "6 Rekat",
+      "rakatDetail": "Genellikle 6 rekat",
+      "time": "Akşam-Yatsı arası",
+      "recitation": "Fatiha + Kısa sure",
+      "sequence": [
+        {
+          "label": "Akşam sonrası",
+          "title": "2 rekat nafile kılınır"
+        },
+        {
+          "label": "Devam",
+          "title": "İkişer rekatla 6 rekata tamamlanır"
+        }
+      ],
+      "recitationDetails": [
+        {
+          "title": "Nafile okuma",
+          "lines": [
+            "Her rekâtta Fatiha’dan sonra zammı sûre okunur.",
+            "Genellikle ikişer rekâtla 6 rekâta tamamlanır."
+          ]
+        }
+      ]
+    },
+    {
+      "key": "tahajjud",
+      "title": "Teheccüd",
+      "fullTitle": "Teheccüd Namazı",
+      "icon": "weather-night",
+      "color": "#5F27CD",
+      "summary": "Gece uykudan kalktıktan sonra kılınan nafile namazdır.",
+      "rakats": "2-12 Rekat",
+      "rakatDetail": "2, 4, 8 veya 12 rekat",
+      "time": "Gece yarısı sonrası",
+      "recitation": "Fatiha + Kısa sure",
+      "sequence": [
+        {
+          "label": "Gece",
+          "title": "2 rekat nafile kılınır"
+        },
+        {
+          "label": "Devam",
+          "title": "İstenirse ikişer rekatla artırılır"
+        }
+      ],
+      "recitationDetails": [
+        {
+          "title": "Nafile okuma",
+          "lines": [
+            "Her rekâtta Fatiha’dan sonra zammı sûre okunur.",
+            "Gece kılınır; istenirse ikişer rekâtla artırılır."
+          ]
+        }
+      ]
+    }
+  ],
+  "DETAIL_STEPS": [
+    {
+      "title": "Niyet",
+      "text": "Kılacağın namaza kalben niyet edilir. Niyet sessiz yapılabilir.",
+      "imageKey": "niyet"
+    },
+    {
+      "title": "İftitah Tekbiri",
+      "text": "Eller kaldırılır ve “Allahu Ekber” denilerek namaza başlanır.",
+      "imageKey": "tekbir"
+    },
+    {
+      "title": "Kıyam",
+      "text": "Ayakta durulur. Sübhaneke, Eûzü Besmele, Fatiha ve kısa sure okunur.",
+      "imageKey": "kiyam"
+    },
+    {
+      "title": "Rükû",
+      "text": "Eğilerek rükûya gidilir ve “Sübhane rabbiyel azîm” tesbihi okunur.",
+      "imageKey": "ruku"
+    },
+    {
+      "title": "Rükûdan Doğrulma",
+      "text": "“Semiallahu limen hamideh” denilerek doğrulunur, ardından “Rabbena lekel hamd” okunur.",
+      "imageKey": "dogrulma"
+    },
+    {
+      "title": "Secde",
+      "text": "Secdeye gidilir ve “Sübhane rabbiyel a’lâ” tesbihi okunur.",
+      "imageKey": "secde"
+    },
+    {
+      "title": "İki Secde Arası",
+      "text": "Birinci secdeden kalkılır, kısa oturulur ve ikinci secdeye gidilir.",
+      "imageKey": "oturus"
+    },
+    {
+      "title": "Tahiyyat Oturuşu",
+      "text": "Son oturuşta Ettehiyyatü, Salli-Barik ve Rabbena duaları okunur.",
+      "imageKey": "tahiyyat"
+    },
+    {
+      "title": "Selam",
+      "text": "Sağa ve sola selam verilerek namaz tamamlanır.",
+      "imageKey": "selam"
+    }
+  ],
+  "CONDITIONS": [
+    [
+      "Müslüman olmak",
+      "moon-waning-crescent"
+    ],
+    [
+      "Akıllı olmak",
+      "brain"
+    ],
+    [
+      "Ergenlik çağına gelmiş olmak",
+      "account-outline"
+    ],
+    [
+      "Namaz vakti girmiş olmak",
+      "clock-outline"
+    ],
+    [
+      "Abdestli olmak",
+      "water-check-outline"
+    ],
+    [
+      "Kıbleye yönelmek",
+      "navigation-variant-outline"
+    ],
+    [
+      "Örtünmek (avret yerleri)",
+      "tshirt-crew-outline"
+    ]
+  ]
+}

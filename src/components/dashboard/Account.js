@@ -1,124 +1,163 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { FiUser, FiMail, FiKey, FiLogOut, FiTrash2 } from 'react-icons/fi';
-import { IoPersonCircleOutline } from 'react-icons/io5';
-import './Account.css';
-
-function Account() {
+import { t } from "../../context/Preferences";
+import { useState } from "react";
+import { Link, Navigate, useNavigate } from "react-router-dom";
+import { FiUser, FiLogOut } from "react-icons/fi";
+import { getSession, clearSession } from "../../utils/session";
+import { request } from "../../services/api";
+import { useMutation } from "../../hooks/useRemote";
+import { Feedback } from "../community/Shared";
+import "../../pages/Extended.css";
+export default function Account() {
+  const user = getSession();
   const navigate = useNavigate();
-  const [user] = useState(() => JSON.parse(localStorage.getItem('user')));
-
-  const handleLogout = () => {
-    if (window.confirm('Çıkış yapmak istediğinize emin misiniz?')) {
-      localStorage.removeItem('user');
-      navigate('/login');
-    }
-  };
-
-  const handleDeleteAccount = () => {
-    if (window.confirm('Hesabınızı silmek istediğinize emin misiniz? Bu işlem geri alınamaz!')) {
-      // TODO: API call to delete account
-      localStorage.removeItem('user');
-      navigate('/login');
-      alert('Hesabınız silindi!');
-    }
-  };
-
-  if (!user) {
-    navigate('/login');
-    return null;
-  }
-
+  const [password, setPassword] = useState("");
+  const [confirmation, setConfirmation] = useState("");
+  const [deleting, setDeleting] = useState(false);
+  const mutation = useMutation();
+  if (!user) return <Navigate to="/login" replace />;
   return (
-    <div className="account-container">
-      {/* Header */}
-      <div className="account-header">
-        <div className="header-content">
-          <div className="header-icon">
-            <IoPersonCircleOutline size={32} color="white" />
-          </div>
-          <div className="header-info">
-            <h2>Hesabım</h2>
-            <div className="header-subtitle">
-              <span>Profil ve hesap ayarları</span>
-            </div>
-          </div>
+    <>
+      <div className="pt-page-heading">
+        <div>
+          <p className="pt-eyebrow">{t("SANA AİT BİR ALAN")}</p>
+          <h1>{t("Hesabım")}</h1>
+          <p>{t("Profil bilgilerin ve hesap işlemlerin.")}</p>
         </div>
       </div>
-
-      <div className="account-content">
-        {/* Profile Card */}
-        <div className="profile-card">
-          <div className="avatar">
-            <FiUser size={60} />
-          </div>
-          <h2 className="user-name">{user.name || user.username || 'Kullanıcı'}</h2>
-          <p className="user-email">{user.email}</p>
-        </div>
-
-        {/* Account Info Section */}
-        <div className="account-section">
-          <h3 className="section-title">Hesap Bilgileri</h3>
-
-          <div className="info-card">
-            <div className="info-row">
-              <div className="info-icon">
-                <FiUser size={20} />
-              </div>
-              <div className="info-content">
-                <span className="info-label">İsim</span>
-                <span className="info-value">{user.name || user.username || 'Belirtilmemiş'}</span>
-              </div>
-            </div>
-
-            <div className="divider"></div>
-
-            <div className="info-row">
-              <div className="info-icon">
-                <FiMail size={20} />
-              </div>
-              <div className="info-content">
-                <span className="info-label">Email</span>
-                <span className="info-value">{user.email}</span>
-              </div>
-            </div>
-
-            <div className="divider"></div>
-
-            <div className="info-row">
-              <div className="info-icon">
-                <FiKey size={20} />
-              </div>
-              <div className="info-content">
-                <span className="info-label">Kullanıcı ID</span>
-                <span className="info-value user-id">{user._id}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Actions Section */}
-        <div className="account-section">
-          <h3 className="section-title">İşlemler</h3>
-
-          <button className="logout-btn" onClick={handleLogout}>
-            <FiLogOut size={24} />
-            <span>Çıkış Yap</span>
-          </button>
-
-          <button className="delete-btn" onClick={handleDeleteAccount}>
-            <FiTrash2 size={24} />
-            <span>Hesabımı Sil</span>
+      <section className="pt-panel">
+        <span className="pt-tool-icon">
+          <FiUser />
+        </span>
+        <h2>{t(user.name || user.username || "Kullanıcı")}</h2>
+        <p className="pt-note">{user.email}</p>
+        <p className="pt-note">
+          {t(
+            "Web ve mobil uygulamada aynı hesabınla giriş yaparak ibadet kayıtlarına ulaşabilirsin."
+          )}
+        </p>
+        <div className="pt-actions">
+          <Link className="pt-button secondary" to="/settings">
+            {t("Uygulama ayarları")}
+          </Link>
+          <Link className="pt-button secondary" to="/subscription">
+            {t("Satın alma durumum")}
+          </Link>
+          <Link className="pt-button secondary" to="/support">
+            {t("Destek merkezi")}
+          </Link>
+          <button
+            className="pt-button secondary"
+            onClick={async () => {
+              await clearSession();
+              navigate("/login", {
+                replace: true,
+              });
+            }}
+          >
+            <FiLogOut />
+            {t(" Çıkış yap")}
           </button>
         </div>
-
-        {/* Version Info */}
-        <div className="version-info">
-          <p>İbadet Takip v1.0.0</p>
-        </div>
-      </div>
-    </div>
+      </section>
+      <section className="pt-account-request">
+        <h3>{t("Hesabımı sil")}</h3>
+        <p>
+          {t(
+            "Hesabın, namaz ve oruç kayıtların, günlüğün, hedeflerin ve kişisel verilerin kalıcı olarak silinir. Bu işlem geri alınamaz. Mağaza aboneliğin varsa önce satın aldığın mağazadan yönetebilirsin."
+          )}
+        </p>
+        <Feedback error={mutation.error} />
+        {t(
+          !deleting ? (
+            <button
+              className="pt-button secondary"
+              onClick={() => setDeleting(true)}
+            >
+              {t("Hesap silme adımını aç")}
+            </button>
+          ) : (
+            <form
+              className="pt-form-stack"
+              onSubmit={async (e) => {
+                e.preventDefault();
+                if (confirmation !== "SİL") return;
+                const result = await mutation.run("delete", () =>
+                  request("/account", {
+                    method: "delete",
+                    jwt: true,
+                    data: {
+                      password,
+                      confirmation: "DELETE",
+                    },
+                  })
+                );
+                if (result.ok) {
+                  const prefix = `pt:${user._id}:`;
+                  Object.keys(localStorage)
+                    .filter((key) => key.startsWith(prefix))
+                    .forEach((key) => localStorage.removeItem(key));
+                  await clearSession();
+                  navigate("/login", {
+                    replace: true,
+                    state: {
+                      accountDeleted: true,
+                    },
+                  });
+                }
+              }}
+            >
+              <label className="pt-field">
+                {t("Mevcut şifren")}
+                <input
+                  type="password"
+                  autoComplete="current-password"
+                  required
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  disabled={Boolean(mutation.busy)}
+                />
+              </label>
+              <label className="pt-field">
+                {t("Onaylamak için SİL yaz")}
+                <input
+                  value={confirmation}
+                  onChange={(e) => setConfirmation(e.target.value)}
+                  autoComplete="off"
+                  disabled={Boolean(mutation.busy)}
+                />
+              </label>
+              <div className="pt-actions">
+                <button
+                  className="pt-button pt-danger-button"
+                  disabled={
+                    !password ||
+                    confirmation !== "SİL" ||
+                    Boolean(mutation.busy)
+                  }
+                >
+                  {t(
+                    mutation.busy
+                      ? "Hesabın siliniyor…"
+                      : "Hesabımı kalıcı olarak sil"
+                  )}
+                </button>
+                <button
+                  className="pt-button secondary"
+                  type="button"
+                  disabled={Boolean(mutation.busy)}
+                  onClick={() => {
+                    setDeleting(false);
+                    setPassword("");
+                    setConfirmation("");
+                  }}
+                >
+                  {t("Vazgeç")}
+                </button>
+              </div>
+            </form>
+          )
+        )}
+      </section>
+    </>
   );
 }
-
-export default Account;

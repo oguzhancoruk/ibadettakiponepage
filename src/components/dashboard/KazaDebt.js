@@ -1,24 +1,46 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import axios from 'axios';
-import config from '../../config/config.json';
-import moment from 'moment';
-import 'moment/locale/tr';
-import { FiArrowLeft, FiCalendar, FiClock, FiCheckCircle } from 'react-icons/fi';
-import { useLoading } from '../../context/LoadingContext';
-import logo from '../assets/images/1.png';
-import './KazaDebt.css';
-
-moment.locale('tr');
-
+import { t } from "../../context/Preferences";
+import React, { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import axios from "axios";
+import config from "../../config/config";
+import moment from "moment";
+import "moment/locale/tr";
+import {
+  FiArrowLeft,
+  FiCalendar,
+  FiClock,
+  FiCheckCircle,
+} from "react-icons/fi";
+import { useLoading } from "../../context/LoadingContext";
+import logo from "../assets/images/1.png";
+import "./KazaDebt.css";
 const PRAYERS = [
-  { key: 'fajr', name: 'Sabah', color: '#FF6B6B' },
-  { key: 'dhuhr', name: 'Öğle', color: '#4ECDC4' },
-  { key: 'asr', name: 'İkindi', color: '#45B7D1' },
-  { key: 'maghrib', name: 'Akşam', color: '#F7B731' },
-  { key: 'isha', name: 'Yatsı', color: '#5F27CD' }
+  {
+    key: "fajr",
+    name: "Sabah",
+    color: "#FF6B6B",
+  },
+  {
+    key: "dhuhr",
+    name: "Öğle",
+    color: "#4ECDC4",
+  },
+  {
+    key: "asr",
+    name: "İkindi",
+    color: "#45B7D1",
+  },
+  {
+    key: "maghrib",
+    name: "Akşam",
+    color: "#F7B731",
+  },
+  {
+    key: "isha",
+    name: "Yatsı",
+    color: "#5F27CD",
+  },
 ];
-
 function KazaDebt() {
   const navigate = useNavigate();
   const { debtId } = useParams();
@@ -26,122 +48,130 @@ function KazaDebt() {
   const [debt, setDebt] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedPrayer, setSelectedPrayer] = useState(null);
-  const [rakatInput, setRakatInput] = useState('');
-
+  const [rakatInput, setRakatInput] = useState("");
   useEffect(() => {
     fetchDebt();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debtId]);
-
   const fetchDebt = async () => {
     setIsLoading(true);
     try {
-      const user = JSON.parse(localStorage.getItem('user'));
-      const response = await axios.get(`${config.api_base}/api/kaza/${debtId}`, {
-        headers: { Authorization: `Bearer ${user._id}` }
-      });
-
+      const user = JSON.parse(localStorage.getItem("user"));
+      const response = await axios.get(
+        `${config.api_base}/api/kaza/${debtId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${user._id}`,
+          },
+        }
+      );
       if (response.data.statusCode === 200) {
         setDebt(response.data.data);
       }
     } catch (error) {
-      console.error('Kaza detay yükleme hatası:', error);
+      console.error("Kaza detay yükleme hatası:", error);
     } finally {
       setIsLoading(false);
     }
   };
-
   const handlePrayed = async () => {
     const rakats = parseInt(rakatInput);
     if (!rakats || rakats <= 0) {
-      alert('Lütfen geçerli bir rekat sayısı girin');
+      alert("Lütfen geçerli bir rekat sayısı girin");
       return;
     }
-
     try {
-      const user = JSON.parse(localStorage.getItem('user'));
+      const user = JSON.parse(localStorage.getItem("user"));
       await axios.post(
         `${config.api_base}/api/kaza/${debtId}/prayed`,
         {
           prayerType: selectedPrayer.key,
-          rakats: rakats
+          rakats: rakats,
         },
         {
-          headers: { Authorization: `Bearer ${user._id}` }
+          headers: {
+            Authorization: `Bearer ${user._id}`,
+          },
         }
       );
-
       setModalVisible(false);
       setSelectedPrayer(null);
-      setRakatInput('');
+      setRakatInput("");
       fetchDebt();
     } catch (error) {
-      console.error('Kaza işaretleme hatası:', error);
-      alert('Kaza namazı işaretlenirken bir hata oluştu');
+      console.error("Kaza işaretleme hatası:", error);
+      alert("Kaza namazı işaretlenirken bir hata oluştu");
     }
   };
-
   const formatNumber = (num) => {
     if (num >= 1000000) {
-      return (num / 1000000).toFixed(1) + 'M';
+      return (num / 1000000).toFixed(1) + "M";
     } else if (num >= 1000) {
-      return (num / 1000).toFixed(1) + 'K';
+      return (num / 1000).toFixed(1) + "K";
     }
     return num.toString();
   };
-
   if (isLoading) {
     return (
       <div className="page-loading-container">
-        <img src={logo} alt="Loading" className="page-loading-logo" />
+        <img src={logo} alt={t("Loading")} className="page-loading-logo" />
       </div>
     );
   }
-
   if (!debt) {
-    return <div className="loading">Kaza borcu bulunamadı</div>;
+    return <div className="loading">{t("Kaza borcu bulunamadı")}</div>;
   }
-
   const totalDebtRakats = debt.totalDebtRakats || 0;
   const totalPrayedRakats = debt.totalPrayedRakats || 0;
   const totalRequiredRakats = debt.totalRequiredRakats || 0;
   const daysSinceStart = debt.daysSinceStart || 0;
-
   return (
     <div className="kaza-debt-container">
       {/* Header */}
       <div className="kaza-debt-header">
-        <button className="back-btn" onClick={() => navigate('/kaza')}>
+        <button className="back-btn" onClick={() => navigate("/kaza")}>
           <FiArrowLeft size={24} />
         </button>
-        <h2>{debt.name}</h2>
+        <h2>{t(debt.name)}</h2>
       </div>
 
       {/* Summary Card */}
       <div className="summary-card">
         <div className="summary-date">
           <FiCalendar size={16} />
-          <span>Başlangıç: {moment(debt.startDate).format('DD MMMM YYYY')}</span>
+          <span>
+            {t("Başlangıç: ")}
+            {moment(debt.startDate).format("DD MMMM YYYY")}
+          </span>
         </div>
         <div className="summary-days">
           <FiClock size={16} />
-          <span>{daysSinceStart} gün önce</span>
+          <span>
+            {t(daysSinceStart)}
+            {t(" gün önce")}
+          </span>
         </div>
 
         <div className="summary-stats">
           <div className="summary-stat">
-            <span className="summary-stat-value">{formatNumber(totalRequiredRakats)}</span>
-            <span className="summary-stat-label">Olması Gereken</span>
+            <span className="summary-stat-value">
+              {t(formatNumber(totalRequiredRakats))}
+            </span>
+            <span className="summary-stat-label">{t("Olması Gereken")}</span>
           </div>
           <div className="summary-stat-divider" />
           <div className="summary-stat">
-            <span className="summary-stat-value success">{formatNumber(totalPrayedRakats)}</span>
-            <span className="summary-stat-label">Kılınan</span>
+            <span className="summary-stat-value success">
+              {t(formatNumber(totalPrayedRakats))}
+            </span>
+            <span className="summary-stat-label">{t("Kılınan")}</span>
           </div>
           <div className="summary-stat-divider" />
           <div className="summary-stat">
-            <span className="summary-stat-value danger">{formatNumber(totalDebtRakats)}</span>
-            <span className="summary-stat-label">Kalan Borç</span>
+            <span className="summary-stat-value danger">
+              {t(formatNumber(totalDebtRakats))}
+            </span>
+            <span className="summary-stat-label">{t("Kalan Borç")}</span>
           </div>
         </div>
       </div>
@@ -153,17 +183,24 @@ function KazaDebt() {
           const dailyPrayed = debt[`${prayer.key}DailyPrayed`] || 0;
           const kazaPrayed = debt[`${prayer.key}KazaPrayed`] || 0;
           const remaining = debt[`${prayer.key}RemainingDebt`] || 0;
-          const percentage = (debt[`${prayer.key}Percent`] || 0);
-
+          const percentage = debt[`${prayer.key}Percent`] || 0;
           return (
             <div key={prayer.key} className="prayer-detail-card">
               <div className="prayer-detail-header">
-                <div className="prayer-icon" style={{ backgroundColor: prayer.color }}>
-                  {prayer.name.charAt(0)}
+                <div
+                  className="prayer-icon"
+                  style={{
+                    backgroundColor: prayer.color,
+                  }}
+                >
+                  {t(prayer.name.charAt(0))}
                 </div>
                 <div className="prayer-detail-info">
-                  <h3>{prayer.name}</h3>
-                  <p className="remaining-text">{formatNumber(remaining)} rekat kalan</p>
+                  <h3>{t(prayer.name)}</h3>
+                  <p className="remaining-text">
+                    {t(formatNumber(remaining))}
+                    {t(" rekat kalan")}
+                  </p>
                 </div>
               </div>
 
@@ -173,38 +210,48 @@ function KazaDebt() {
                     className="progress-fill"
                     style={{
                       width: `${Math.min(percentage, 100)}%`,
-                      backgroundColor: prayer.color
+                      backgroundColor: prayer.color,
                     }}
                   />
                 </div>
-                <span className="progress-percentage">%{percentage}</span>
+                <span className="progress-percentage">%{t(percentage)}</span>
               </div>
 
               <div className="prayer-stats">
                 <div className="prayer-stat">
-                  <span className="prayer-stat-label">Kalan Borç</span>
-                  <span className="prayer-stat-value danger">{formatNumber(remaining)}</span>
+                  <span className="prayer-stat-label">{t("Kalan Borç")}</span>
+                  <span className="prayer-stat-value danger">
+                    {t(formatNumber(remaining))}
+                  </span>
                 </div>
                 <div className="prayer-stat">
-                  <span className="prayer-stat-label">Günlük Kılınan</span>
-                  <span className="prayer-stat-value primary">{formatNumber(dailyPrayed)}</span>
+                  <span className="prayer-stat-label">
+                    {t("Günlük Kılınan")}
+                  </span>
+                  <span className="prayer-stat-value primary">
+                    {t(formatNumber(dailyPrayed))}
+                  </span>
                 </div>
                 <div className="prayer-stat">
-                  <span className="prayer-stat-label">Kaza Kılınan</span>
-                  <span className="prayer-stat-value success">{formatNumber(kazaPrayed)}</span>
+                  <span className="prayer-stat-label">{t("Kaza Kılınan")}</span>
+                  <span className="prayer-stat-value success">
+                    {t(formatNumber(kazaPrayed))}
+                  </span>
                 </div>
               </div>
 
               <button
                 className="prayed-btn"
-                style={{ backgroundColor: prayer.color }}
+                style={{
+                  backgroundColor: prayer.color,
+                }}
                 onClick={() => {
                   setSelectedPrayer(prayer);
                   setModalVisible(true);
                 }}
               >
                 <FiCheckCircle size={20} />
-                <span>Kaza Kıldım (Rekat Gir)</span>
+                <span>{t("Kaza Kıldım (Rekat Gir)")}</span>
               </button>
             </div>
           );
@@ -215,14 +262,15 @@ function KazaDebt() {
       {modalVisible && (
         <div className="modal-overlay" onClick={() => setModalVisible(false)}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <h3>Kaza Kıldım</h3>
+            <h3>{t("Kaza Kıldım")}</h3>
             <p className="modal-description">
-              {selectedPrayer?.name} namazı için kaç rekat kıldınız?
+              {t(selectedPrayer?.name)}
+              {t(" namazı için kaç rekat kıldınız?")}
             </p>
             <input
               type="number"
               className="modal-input"
-              placeholder="Rekat sayısı (örn: 10)"
+              placeholder={t("Rekat sayısı (örn: 10)")}
               value={rakatInput}
               onChange={(e) => setRakatInput(e.target.value)}
               autoFocus
@@ -233,16 +281,13 @@ function KazaDebt() {
                 onClick={() => {
                   setModalVisible(false);
                   setSelectedPrayer(null);
-                  setRakatInput('');
+                  setRakatInput("");
                 }}
               >
-                İptal
+                {t("İptal")}
               </button>
-              <button
-                className="modal-btn confirm-btn"
-                onClick={handlePrayed}
-              >
-                Tamam
+              <button className="modal-btn confirm-btn" onClick={handlePrayed}>
+                {t("Tamam")}
               </button>
             </div>
           </div>
@@ -251,5 +296,4 @@ function KazaDebt() {
     </div>
   );
 }
-
 export default KazaDebt;

@@ -1,0 +1,333 @@
+/* Shared identity for the existing daily, fasting and debt screens. */
+.App {
+  min-height: 100vh;
+  background: var(--pt-bg, #f8f6f1);
+}
+.login-container {
+  background: var(--pt-bg, #f8f6f1);
+  min-height: calc(100vh - 85px);
+  padding: 55px 20px;
+}
+.login-card {
+  border: 1px solid var(--pt-line, #e7ebe6);
+  border-radius: 28px;
+  box-shadow: 0 15px 50px #123f3409;
+  padding: 35px 40px;
+}
+.logo-circle {
+  background: var(--pt-soft, #eaf3e9);
+}
+.app-title,
+.form-title {
+  color: var(--pt-text, #123f34);
+  letter-spacing: -0.7px;
+}
+.form-input {
+  border-width: 1px;
+  background: var(--pt-field-bg, #fafbf7);
+  border-color: #e0e7da;
+}
+.form-input:focus {
+  border-color: #0d7548;
+  box-shadow: 0 0 0 3px #0d754810;
+}
+.login-button {
+  background: #0d7548;
+}
+.login-button:hover:not(:disabled) {
+  background: #075e39;
+}
+.login-form .link-text {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  color: #0d7548;
+}
+.pt-app .daily-prayer-container,
+.pt-app .fasting-container,
+.pt-app .kaza-debt-list-container,
+.pt-app .kaza-debt-container {
+  max-width: 1100px;
+  margin: auto;
+}
+.pt-app .daily-prayer-header,
+.pt-app .fasting-header,
+.pt-app .kaza-header {
+  background: #0d7548;
+  border-radius: 20px;
+}
+.pt-app .page-loading-container {
+  min-height: 350px;
+}
+.pt-app .stat-value {
+  color: var(--pt-text, #123f34);
+}
+.pt-app .prayer-card {
+  box-shadow: none;
+}
+.pt-app .prayer-card.checked {
+  background: var(--pt-soft, #eaf3e9);
+}
+.pt-app .page-content {
+  background: var(--pt-surface, #fff);
+}
+.pt-app .header-content {
+  flex-wrap: wrap;
+}
+.pt-app .error-message {
+  margin-top: 16px;
+}
+button:disabled {
+  opacity: 0.6;
+}
+.pt-app .pt-button {
+  color: #fff;
+}
+.pt-app .pt-button.secondary {
+  color: var(--pt-body-text, #326443);
+}
+.pt-app .react-calendar {
+  max-width: 100%;
+  border: 1px solid var(--pt-line, #e7ebe6);
+  border-radius: 16px;
+  padding: 12px;
+}
+.pt-app .react-calendar__tile--active {
+  background: #0d7548;
+}
+.pt-app .react-calendar__tile--now {
+  background: var(--pt-soft, #edf2e5);
+}
+.pt-app .react-calendar button {
+  border-radius: 8px;
+}
+.pt-app .react-calendar__navigation button:enabled:hover {
+  background: var(--pt-soft, #edf2e5);
+}
+@media (max-width: 600px) {
+  .login-card {
+    padding: 30px 24px;
+  }
+  .pt-app .prayer-card {
+    padding: 16px;
+  }
+  .pt-app .header-content h2 {
+    font-size: 22px;
+  }
+  .pt-app .content-area {
+    padding: 0;
+  }
+  .pt-app .page-content {
+    padding: 20px;
+  }
+}
+
+:root {
+  --pt-surface: #fff;
+  --pt-bg: #f8f6f1;
+  --pt-field-bg: #fafbf7;
+  --pt-text: #123f34;
+  --pt-line: #e7ebe6;
+  --pt-soft: #edf3e9;
+  --pt-muted-text: #708176;
+  --pt-body-text: #526b5a;
+  color-scheme: light;
+}
+:root[data-theme="dark"] {
+  --pt-surface: #172b25;
+  --pt-bg: #0e1c18;
+  --pt-field-bg: #12251e;
+  --pt-text: #e1f1e8;
+  --pt-line: #304b40;
+  --pt-soft: #203d30;
+  --pt-muted-text: #b0c4b7;
+  --pt-body-text: #c6dbcc;
+  color-scheme: dark;
+}
+[data-theme="dark"] body {
+  background: var(--pt-bg);
+  color: var(--pt-text);
+}
+[data-theme="dark"] .pt-app {
+  --pt-ink: #e1f1e8;
+  --pt-muted: #b0c4b7;
+  --pt-border: #304b40;
+}
+[data-theme="dark"]
+  :is(
+    .pt-note,
+    .pt-page-heading p,
+    .pt-nav-label,
+    .pt-tool-card p,
+    .pt-app-footer,
+    .pt-topbar-title,
+    .pt-field,
+    .pt-verse-reference
+  ) {
+  color: var(--pt-muted-text);
+}
+[data-theme="dark"]
+  :is(
+    .pt-icon-button,
+    .pt-side-links a,
+    .pt-brand,
+    .pt-tag,
+    .pt-bottom-nav a.active,
+    .pt-button.secondary,
+    .pt-tool-icon,
+    .pt-eyebrow,
+    .pt-success,
+    .pt-community-nav a,
+    .pt-dua-open,
+    .pt-community-stats strong
+  ) {
+  color: #a2dab0;
+}
+[data-theme="dark"] :is(.pt-sidebar-note, .pt-avatar, .pt-person-avatar) {
+  background: var(--pt-soft);
+  color: #b7d9bb;
+}
+[data-theme="dark"] .pt-arabic {
+  color: var(--pt-text) !important;
+}
+[data-theme="dark"] :is(.pt-error, .error-message) {
+  background: #42271f;
+  color: #ffccbd;
+  border-color: #79483b;
+}
+[data-theme="dark"] .pt-report :is(h2, strong),
+[data-theme="dark"] .pt-panel h2 {
+  color: var(--pt-text);
+}
+[data-theme="dark"]
+  :is(
+    .pt-side-links a:hover,
+    .react-calendar,
+    .prayer-card,
+    .calendar-container,
+    .fasting-card,
+    .stat-card,
+    .modal-content,
+    .debt-card
+  ) {
+  background: var(--pt-surface);
+  color: var(--pt-text);
+}
+[data-theme="dark"] .pt-side-links a.active {
+  background: var(--pt-soft);
+  color: #a2dab0;
+}
+[data-theme="dark"] .pt-tesbih-counter {
+  background: var(--pt-soft);
+  color: var(--pt-text);
+  border-color: #3e6344;
+  border-top-color: #54b477;
+  box-shadow: 0 0 0 12px var(--pt-bg);
+}
+[data-theme="dark"]
+  :is(.form-input, .pt-search input, .pt-reader-toolbar input) {
+  color: var(--pt-text);
+}
+[data-theme="dark"] .pt-game-answer {
+  background: var(--pt-soft);
+  color: var(--pt-text);
+}
+[data-theme="dark"]
+  :is(
+    .pt-person p,
+    .pt-person h3,
+    .pt-community-nav a.active,
+    .pt-filter-row button,
+    .pt-badge-card h2,
+    .pt-badge-card p
+  ) {
+  color: var(--pt-body-text);
+}
+[data-theme="dark"]
+  :is(
+    .login-button,
+    .header-btn-register,
+    .daily-prayer-header,
+    .fasting-header,
+    .kaza-header
+  ) {
+  color: #fff;
+}
+[data-theme="dark"] .pt-community-nav {
+  border-color: var(--pt-line);
+}
+[data-theme="dark"] :is(.pt-community-nav a.active, .pt-community-nav a:hover) {
+  background: var(--pt-soft);
+}
+
+:root {
+  --pt-readable-green: #0d7548;
+}
+:root[data-theme="dark"] {
+  --pt-readable-green: #9ddbb0;
+}
+[data-theme="dark"]
+  :is(
+    .pt-badge-card.is-earned,
+    .pt-game-badges article.is-unlocked,
+    .pt-game-result,
+    .pt-game-completed
+  ) {
+  background: #26352a;
+  border-color: #5a6441;
+}
+[data-theme="dark"]
+  :is(
+    .pt-quiz-options button,
+    .pt-letter-options button,
+    .pt-order-answer button
+  ) {
+  background: var(--pt-surface);
+  color: var(--pt-text);
+  border-color: var(--pt-line);
+}
+[data-theme="dark"]
+  :is(
+    .pt-quiz-options button[aria-pressed="true"],
+    .pt-quiz-options button.is-correct,
+    .pt-answer-feedback,
+    .pt-order-answer button,
+    .pt-word-answer button
+  ) {
+  background: var(--pt-soft);
+  color: #c5e5ba;
+}
+[data-theme="dark"]
+  :is(.pt-quiz-options button.is-wrong, .pt-answer-feedback.wrong) {
+  background: #42271f;
+  color: #ffccbd;
+}
+[data-theme="dark"]
+  :is(.pt-quiz-options button > span, .pt-order-answer button > b) {
+  background: #3c5140;
+}
+[data-theme="dark"] .pt-games-hero {
+  background: var(--pt-soft);
+  color: var(--pt-text);
+}
+[data-theme="dark"] .pt-games-hero p:not(.pt-eyebrow) {
+  color: var(--pt-body-text);
+}
+[data-theme="dark"]
+  :is(
+    .pt-community-stats > div,
+    .pt-game-card,
+    .pt-game-badges article,
+    .pt-badge-card,
+    .pt-mini-stats a,
+    .pt-week-stat,
+    .pt-quick-links a
+  ) {
+  border-color: var(--pt-line);
+}
+[data-theme="dark"] :is(.pt-mini-stats strong, .pt-game-cta) {
+  color: #a2dab0;
+}
+[data-theme="dark"] .pt-achievement-overview .pt-community-stats > div {
+  background: var(--pt-soft);
+}

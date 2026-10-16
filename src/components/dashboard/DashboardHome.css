@@ -1,256 +1,535 @@
-.dashboard-home {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
+.pt-greeting-sun {
+  display: inline-flex;
+  vertical-align: middle;
+  color: #bfa268;
+  font-size: 25px;
+  margin-left: 8px;
+}
+.pt-time-hero {
   position: relative;
-}
-
-/* Welcome Section */
-.welcome-section {
-  background: linear-gradient(135deg, #40A2E3 0%, #2E86C1 100%);
-  border-radius: 16px;
-  padding: 40px;
-  margin-bottom: 32px;
-  box-shadow: 0 4px 12px rgba(64, 162, 227, 0.2);
-}
-
-.welcome-content h1 {
-  font-size: 32px;
-  font-weight: 700;
-  color: white;
-  margin: 0 0 8px 0;
-}
-
-.welcome-content p {
-  font-size: 16px;
-  color: rgba(255, 255, 255, 0.9);
-  margin: 0;
-}
-
-/* Stats Grid */
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 24px;
-  margin-bottom: 32px;
-}
-
-.stat-card {
-  background: white;
-  border-radius: 16px;
-  padding: 28px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  display: flex;
-  gap: 20px;
-  align-items: flex-start;
-  transition: all 0.3s;
-  cursor: pointer;
-  border-left: 4px solid transparent;
-}
-
-.stat-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-}
-
-.stat-card-primary {
-  border-left-color: #40A2E3;
-}
-
-.stat-card-primary .stat-icon {
-  background: linear-gradient(135deg, rgba(64, 162, 227, 0.1) 0%, rgba(46, 134, 193, 0.1) 100%);
-  color: #40A2E3;
-}
-
-.stat-card-success {
-  border-left-color: #10B981;
-}
-
-.stat-card-success .stat-icon {
-  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.1) 100%);
-  color: #10B981;
-}
-
-.stat-card-warning {
-  border-left-color: #F59E0B;
-}
-
-.stat-card-warning .stat-icon {
-  background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(217, 119, 6, 0.1) 100%);
-  color: #F59E0B;
-}
-
-.stat-card-info {
-  border-left-color: #8B5CF6;
-}
-
-.stat-card-info .stat-icon {
-  background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(124, 58, 237, 0.1) 100%);
-  color: #8B5CF6;
-}
-
-.stat-icon {
-  width: 64px;
-  height: 64px;
-  border-radius: 12px;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: 24px;
+  padding: 34px 38px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
+  justify-content: space-between;
+  gap: 30px;
+  color: #fff;
+  background: #0c5137;
+  margin-bottom: 26px;
+  min-height: 268px;
 }
-
-.stat-content {
+.pt-time-hero:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+      90deg,
+      rgba(4, 48, 30, 0.95),
+      rgba(8, 66, 42, 0.6)
+    ),
+    url("../../assets/home/prayer-tile-skyline.png") center 65% / cover;
+  z-index: -1;
+}
+.pt-time-hero-copy {
+  max-width: 480px;
+}
+.pt-light-label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11px;
+  color: #c1d9c7;
+  margin-bottom: 25px;
+}
+.pt-time-hero .pt-eyebrow {
+  color: #b8cea6;
+  margin-bottom: 8px;
+  font-size: 9px;
+  letter-spacing: 2.2px;
+}
+.pt-time-hero h2 {
+  font-size: clamp(30px, 3.8vw, 43px);
+  letter-spacing: -1.4px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+.pt-time-hero p:not(.pt-eyebrow) {
+  font-size: 12px;
+  line-height: 1.8;
+  color: #c5d7c9;
+}
+.pt-location-button {
+  border: 1px solid #86a38b65;
+  color: #fff;
+  background: #ffffff12;
+  display: inline-flex;
+  gap: 7px;
+  align-items: center;
+  border-radius: 30px;
+  padding: 9px 14px;
+  font-size: 11px;
+  margin-top: 19px;
+  cursor: pointer;
+}
+.pt-location-button:disabled {
+  opacity: 0.6;
+}
+.pt-countdown-ring {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 13px;
+  width: 190px;
+  height: 190px;
+  border: 2px solid #b5c79c70;
+  border-top-color: #d6dfb5;
+  border-right-color: #d6dfb5;
+  border-radius: 50%;
+  box-shadow: 0 0 0 10px #ffffff05;
+}
+.pt-countdown-ring > svg {
+  font-size: 19px;
+  color: #c2d5ae;
+}
+.pt-countdown-ring strong {
+  font-size: 29px;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 1px;
+  font-weight: 500;
+}
+.pt-countdown-ring span {
+  font-size: 10px;
+  color: #bed0b9;
+}
+.pt-home-columns {
+  display: grid;
+  grid-template-columns: minmax(0, 1.8fr) minmax(275px, 1fr);
+  gap: 24px;
+}
+.pt-home-primary,
+.pt-home-secondary {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  min-width: 0;
+}
+.pt-prayer-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+}
+.pt-prayer-tile {
+  border: 0;
+  background-size: cover;
+  background-position: center;
+  border-radius: 14px;
+  min-width: 0;
+  min-height: 146px;
+  position: relative;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: start;
+  padding: 13px 10px;
+  cursor: pointer;
+  isolation: isolate;
+  overflow: hidden;
+}
+.pt-prayer-tile:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(transparent, rgba(0, 25, 22, 0.65));
+  z-index: -1;
+}
+.pt-prayer-tile strong {
+  font-size: 13px;
+  margin-bottom: 5px;
+}
+.pt-prayer-tile > span:last-child {
+  font-size: 12px;
+  opacity: 0.85;
+}
+.pt-prayer-tick {
+  display: grid;
+  place-items: center;
+  position: absolute;
+  top: 9px;
+  right: 9px;
+  border: 1px solid #ffffffaa;
+  width: 19px;
+  height: 19px;
+  border-radius: 50%;
+  background: #ffffff24;
+}
+.pt-prayer-tile.is-done {
+  outline: 3px solid #91b59a;
+  outline-offset: 2px;
+}
+.pt-prayer-tile.is-done .pt-prayer-tick {
+  background: #0d7548;
+  border-color: #0d7548;
+}
+.pt-prayer-tile:disabled {
+  cursor: default;
+  opacity: 0.7;
+}
+.pt-daily-progress {
+  margin-top: 20px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.pt-daily-progress > span {
+  font-size: 10px;
+  color: #879181;
+}
+.pt-daily-progress > div {
+  height: 5px;
+  flex: 1;
+  background: #edf0e6;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.pt-daily-progress i {
+  display: block;
+  height: 100%;
+  background: #0d7548;
+  border-radius: 10px;
+}
+.pt-section-description {
+  color: #8a9587;
+  font-size: 11px;
+  margin-top: 5px;
+}
+.pt-nafile-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 13px;
+}
+.pt-nafile-tile {
+  background-position: center;
+  background-size: cover;
+  min-height: 190px;
+  border-radius: 16px;
+  padding: 20px 16px 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  isolation: isolate;
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+}
+.pt-nafile-tile:before {
+  content: "";
+  inset: 0;
+  position: absolute;
+  background: linear-gradient(#052d2433, #052d2477);
+  z-index: -1;
+}
+.pt-nafile-tile h3 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+.pt-nafile-tile p {
+  font-size: 10px;
+  opacity: 0.85;
+}
+.pt-nafile-bottom {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  justify-content: space-between;
+}
+.pt-rakats {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+.pt-rakats button {
+  border: 1px solid #ffffff90;
+  background: #ffffffeb;
+  color: #1b4b3c;
+  border-radius: 50%;
+  min-width: 30px;
+  height: 30px;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.pt-rakats button[aria-pressed="true"] {
+  background: #0d7548;
+  color: #fff;
+  border-color: #b3d8b3;
+}
+.pt-nafile-check {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  border: 1.5px solid #ffffffc0;
+  background: #ffffff20;
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+}
+.pt-nafile-check[aria-pressed="true"] {
+  background: #0d7548;
+}
+.pt-nafile-tile button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.pt-week-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px 0 24px;
+  border-bottom: 1px solid #edf0e8;
+}
+.pt-week-stat > strong {
+  font-size: 45px;
+  letter-spacing: -1.5px;
+  font-weight: 600;
+}
+.pt-week-stat small {
+  color: #a1ac9b;
+  font-size: 20px;
+  margin-left: 7px;
+  font-weight: 400;
+}
+.pt-week-stat > span {
+  font-size: 12px;
+  color: #84917f;
+}
+.pt-mini-stats a {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 20px 0;
+  border-bottom: 1px solid #edf0e8;
+}
+.pt-mini-stats a:last-child {
+  padding-bottom: 0;
+  border: 0;
+}
+.pt-mini-stats a > svg:first-child {
+  color: #889675;
+  font-size: 21px;
+}
+.pt-mini-stats span {
+  font-size: 11px;
+  color: #8a9483;
   flex: 1;
 }
-
-.stat-content h3 {
-  font-size: 14px;
+.pt-mini-stats strong {
+  display: block;
+  font-size: 23px;
   font-weight: 600;
-  color: #6B7280;
-  margin: 0 0 8px 0;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  color: #254d37;
+  margin-top: 4px;
 }
-
-.stat-value {
-  font-size: 32px;
-  font-weight: 800;
-  color: #1F2937;
-  margin-bottom: 12px;
+.pt-mini-stats small {
+  font-weight: 400;
+  font-size: 11px;
 }
-
-.stat-label {
-  font-size: 14px;
-  color: #6B7280;
-  margin: 0;
+.pt-mini-stats a > svg:last-child {
+  color: #91a185;
 }
-
-.stat-progress {
+.pt-quick-links {
+  display: grid;
+}
+.pt-quick-links a {
   display: flex;
   align-items: center;
   gap: 12px;
+  padding: 15px 0;
+  border-bottom: 1px solid #edf0e8;
 }
-
-.progress-bar {
-  flex: 1;
-  height: 8px;
-  background: #E5E7EB;
-  border-radius: 4px;
-  overflow: hidden;
+.pt-quick-links a:first-child {
+  padding-top: 0;
 }
-
-.progress-fill {
-  height: 100%;
-  background: linear-gradient(90deg, #40A2E3 0%, #2E86C1 100%);
-  border-radius: 4px;
-  transition: width 0.5s ease;
+.pt-quick-links a:last-child {
+  padding-bottom: 0;
+  border: 0;
 }
-
-.progress-text {
-  font-size: 14px;
-  font-weight: 700;
-  color: #40A2E3;
-  min-width: 40px;
-  text-align: right;
-}
-
-/* Quick Actions */
-.quick-actions-section {
-  background: white;
-  border-radius: 16px;
-  padding: 32px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-}
-
-.quick-actions-section h2 {
-  font-size: 20px;
-  font-weight: 700;
-  color: #1F2937;
-  margin: 0 0 24px 0;
-}
-
-.quick-actions-grid {
+.pt-quick-links a > span {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 16px;
-}
-
-.quick-action-btn {
-  background: linear-gradient(135deg, #F9FAFB 0%, #F3F4F6 100%);
-  border: 2px solid #E5E7EB;
+  place-items: center;
+  width: 38px;
+  height: 38px;
   border-radius: 12px;
-  padding: 20px 24px;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  cursor: pointer;
-  transition: all 0.3s;
-  font-size: 15px;
-  font-weight: 600;
-  color: #1F2937;
-}
-
-.quick-action-btn:hover {
-  background: linear-gradient(135deg, #40A2E3 0%, #2E86C1 100%);
-  border-color: #40A2E3;
-  color: white;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(64, 162, 227, 0.3);
-}
-
-.quick-action-btn svg {
+  color: #50724d;
+  background: #f0f3e8;
   flex-shrink: 0;
 }
-
-
-/* Responsive */
-@media (max-width: 768px) {
-  .welcome-section {
-    padding: 24px;
+.pt-quick-links a > div {
+  flex: 1;
+}
+.pt-quick-links strong {
+  display: block;
+  font-size: 12px;
+}
+.pt-quick-links small {
+  display: block;
+  font-size: 10px;
+  color: #8a9583;
+  margin-top: 5px;
+}
+.pt-quick-links a > svg {
+  color: #91a185;
+}
+.pt-intention {
+  padding: 27px;
+  background: #eaeedc;
+  border-radius: 20px;
+  text-align: center;
+  color: #506747;
+}
+.pt-intention > svg {
+  font-size: 25px;
+  color: #96a16c;
+}
+.pt-intention p {
+  font-size: 14px;
+  line-height: 1.8;
+  margin: 13px 0;
+}
+.pt-intention strong {
+  font-weight: 600;
+}
+.pt-intention > span {
+  font-size: 10px;
+  color: #8a9376;
+}
+@media (max-width: 1200px) {
+  .pt-home-columns {
+    grid-template-columns: minmax(0, 1fr);
   }
-
-  .welcome-content h1 {
-    font-size: 24px;
+  .pt-home-secondary {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
   }
-
-  .welcome-content p {
-    font-size: 14px;
+  .pt-intention {
+    grid-column: 1/-1;
   }
-
-  .stats-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-
-  .stat-card {
-    padding: 20px;
-  }
-
-  .stat-icon {
-    width: 56px;
-    height: 56px;
-  }
-
-  .stat-value {
-    font-size: 28px;
-  }
-
-  .quick-actions-section {
-    padding: 24px;
-  }
-
-  .quick-actions-grid {
-    grid-template-columns: 1fr;
+  .pt-prayer-tile {
+    min-height: 170px;
   }
 }
-
-@media (max-width: 480px) {
-  .stat-card {
-    flex-direction: column;
-    text-align: center;
+@media (max-width: 650px) {
+  .pt-time-hero {
+    padding: 26px 22px;
+    gap: 18px;
+    border-radius: 20px;
   }
-
-  .stat-icon {
-    margin: 0 auto;
+  .pt-time-hero-copy {
+    max-width: 65%;
+  }
+  .pt-time-hero h2 {
+    font-size: 29px;
+  }
+  .pt-time-hero p:not(.pt-eyebrow) {
+    font-size: 11px;
+  }
+  .pt-light-label {
+    font-size: 10px;
+    margin-bottom: 20px;
+  }
+  .pt-countdown-ring {
+    width: 124px;
+    height: 124px;
+    gap: 9px;
+    box-shadow: 0 0 0 5px #ffffff05;
+  }
+  .pt-countdown-ring strong {
+    font-size: 19px;
+    letter-spacing: 0;
+  }
+  .pt-countdown-ring span {
+    font-size: 8px;
+  }
+  .pt-countdown-ring > svg {
+    font-size: 15px;
+  }
+  .pt-home-columns {
+    gap: 18px;
+  }
+  .pt-home-primary,
+  .pt-home-secondary {
+    gap: 18px;
+  }
+  .pt-home-secondary {
+    display: flex;
+  }
+  .pt-prayer-grid {
+    gap: 7px;
+  }
+  .pt-prayer-tile {
+    min-height: 130px;
+    padding: 11px 6px;
+    border-radius: 11px;
+  }
+  .pt-prayer-tile strong {
+    font-size: 11px;
+  }
+  .pt-prayer-tile > span:last-child {
+    font-size: 10px;
+  }
+  .pt-prayer-tick {
+    width: 16px;
+    height: 16px;
+    top: 7px;
+    right: 6px;
+    font-size: 10px;
+  }
+  .pt-nafile-tile {
+    min-height: 177px;
+    padding: 18px 12px 12px;
+  }
+  .pt-nafile-grid {
+    gap: 10px;
+  }
+  .pt-rakats {
+    gap: 3px;
+  }
+  .pt-rakats button {
+    min-width: 25px;
+    height: 27px;
+  }
+  .pt-nafile-check {
+    width: 27px;
+    height: 27px;
+  }
+  .pt-daily-progress {
+    gap: 12px;
+  }
+  .pt-daily-progress > span {
+    font-size: 9px;
+  }
+}
+@media (max-width: 380px) {
+  .pt-time-hero {
+    flex-direction: column;
+    align-items: start;
+  }
+  .pt-time-hero-copy {
+    max-width: 100%;
+  }
+  .pt-countdown-ring {
+    align-self: center;
+  }
+  .pt-nafile-bottom {
+    align-items: end;
+  }
+  .pt-rakats {
+    max-width: 65px;
   }
 }

@@ -8,10 +8,10 @@
 /* Header */
 .policy-header {
   margin-bottom: 24px;
-  background: linear-gradient(135deg, #40A2E3 0%, #2E86C1 100%);
+  background: linear-gradient(135deg, #0d7548 0%, #075e39 100%);
   border-radius: 16px;
   padding: 24px;
-  box-shadow: 0 4px 12px rgba(64, 162, 227, 0.2);
+  box-shadow: 0 4px 12px rgba(13, 117, 72, 0.2);
 }
 
 .policy-header .header-content {
@@ -50,7 +50,7 @@
 }
 
 .policy-content {
-  background: white;
+  background: var(--pt-surface, white);
   border-radius: 16px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
@@ -70,14 +70,14 @@
 .policy-section h3 {
   font-size: 20px;
   font-weight: 700;
-  color: #1F2937;
+  color: var(--pt-text, #1f2937);
   margin: 0 0 16px 0;
   padding-bottom: 12px;
-  border-bottom: 2px solid #40A2E3;
+  border-bottom: 2px solid #0d7548;
 }
 
 .policy-section p {
-  color: #4B5563;
+  color: #4b5563;
   line-height: 1.7;
   margin-bottom: 12px;
   font-size: 15px;
@@ -89,21 +89,21 @@
 }
 
 .policy-section li {
-  color: #4B5563;
+  color: #4b5563;
   line-height: 1.7;
   margin-bottom: 8px;
   font-size: 15px;
 }
 
 .contact-email {
-  background: #F9FAFB;
+  background: var(--pt-soft, #f9fafb);
   padding: 16px;
   border-radius: 8px;
-  border-left: 4px solid #40A2E3;
+  border-left: 4px solid #0d7548;
 }
 
 .contact-email a {
-  color: #40A2E3;
+  color: var(--pt-readable-green, #0d7548);
   text-decoration: none;
   font-weight: 500;
 }
@@ -113,13 +113,13 @@
 }
 
 .policy-footer {
-  border-top: 1px solid #E5E7EB;
+  border-top: 1px solid #e5e7eb;
   padding-top: 24px;
   text-align: center;
 }
 
 .policy-footer p {
-  color: #9CA3AF;
+  color: #9ca3af;
   font-size: 14px;
   margin: 0;
 }
